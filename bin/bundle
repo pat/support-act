@@ -45,7 +45,7 @@ m = Module.new do
 
   def gemfile
     gemfile = ENV["BUNDLE_GEMFILE"]
-    return gemfile if gemfile.present?
+    return gemfile unless gemfile.nil?
 
     File.expand_path("../Gemfile", __dir__)
   end
