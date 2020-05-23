@@ -11,6 +11,6 @@ class SuggestionsMailer < ApplicationMailer
 
     @purchases = Purchase.where(:fan => fan, :album => @albums)
 
-    mail :to => fan.email
+    mail :to => fan.email, :subject => "Monthly Suggestions"
   end
 end
