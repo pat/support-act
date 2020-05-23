@@ -1,0 +1,20 @@
+<div class="album">
+  <div class="image">
+    <% if album.images["extralarge"] %>
+      <%= image_tag album.images["extralarge"] %>
+    <% end %>
+  </div>
+
+  <div class="info">
+    <p class="album-name"><%= album.name %></p>
+    <p class="album-artist"><%= album.artist.name %></p>
+
+    <p class="album-purchase">
+      <% if purchases.any? { |purchase| purchase.album_id == album.id } %>
+        Purchased
+      <% else %>
+        <%= link_to "Mark as Purchased", purchase_url(fan.identifier, album.identifier) %>
+      <% end %>
+    </p>
+  </div>
+</div>

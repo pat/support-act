@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :authentications, :only => :new
+  resources :sessions, :only => :new
+
+  get "/purchases/:fan_uuid/:album_uuid" => "purchases#create", :as => :purchase
+
+  root :to => "home#index"
 end

@@ -1,0 +1,5 @@
+<div class="albums">
+  <% albums.each do |album| %>
+    <%= render :partial => "albums/album", :locals => {:album => album, :fan => current_fan, :purchases => purchases} %>
+  <% end %>
+</div>

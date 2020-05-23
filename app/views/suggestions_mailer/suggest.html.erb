@@ -1,0 +1,13 @@
+<p>Hi <%= @fan.provider_identity %>,</p>
+
+<p>Here are the latest top albums that you've been listening to, as logged by Last.FM. If you haven't already, you may want to purchase them alongside the small royalties for streaming.</p>
+
+<div class="albums">
+  <% @albums.each do |album| %>
+    <%= render :partial => "albums/album", :locals => {:album => album, :fan => @fan, :purchases => @purchases} %>
+  <% end %>
+</div>
+
+<p>Take care,</p>
+
+<p>Support Act</p>

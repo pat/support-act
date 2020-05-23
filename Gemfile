@@ -4,6 +4,8 @@ source "https://rubygems.org"
 
 ruby "2.7.1"
 
+gem "dotenv-rails", :groups => %i[ development test ]
+
 gem "pg", "~> 1.2"
 gem "puma", "~> 4.1"
 gem "rails", "~> 6.0.3"
@@ -13,12 +15,16 @@ gem "turbolinks", "~> 5"
 gem "webpacker", "~> 4.0"
 
 gem "bootsnap", ">= 1.4.2", :require => false
+gem "decent_exposure"
+gem "lastfm"
+gem "postmark-rails"
 gem "rubocop"
 gem "rubocop-performance"
 gem "rubocop-rails"
 
 group :development, :test do
   gem "byebug", :platforms => %i[mri mingw x64_mingw]
+  gem "rspec-rails"
 end
 
 group :development do
