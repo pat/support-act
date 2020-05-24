@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     resource :connection, :only => %i[ new show ]
   end
 
-  get "/purchases/:fan_uuid/:album_uuid" => "purchases#create", :as => :purchase
+  namespace :my do
+    resource :dashboard, :only => :show
+
+    get "/purchases/:fan_uuid/:album_uuid" => "purchases#create", :as => :purchase
+  end
 
   root :to => "home#index"
 end

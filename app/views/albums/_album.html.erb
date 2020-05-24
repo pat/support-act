@@ -13,7 +13,7 @@
       <% if purchases.any? { |purchase| purchase.album_id == album.id } %>
         Purchased
       <% else %>
-        <%= link_to "Mark as Purchased", purchase_url(fan.identifier, album.identifier), :rel => :nofollow %>
+        <%= link_to "Mark as Purchased", my_purchase_url(fan.identifier, album.identifier), :rel => :nofollow %>
       <% end %>
     </p>
   </div>

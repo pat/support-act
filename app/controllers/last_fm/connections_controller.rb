@@ -26,7 +26,9 @@ module LastFm
         :provider_cache    => {"token" => last_fm_session["key"]}
       )
 
-      redirect_to "/"
+      Parse.call(current_fan)
+
+      redirect_to my_dashboard_path
     end
 
     private
