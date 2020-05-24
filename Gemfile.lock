@@ -63,6 +63,8 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
+    bugsnag (6.13.1)
+      concurrent-ruby (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
     concurrent-ruby (1.1.6)
@@ -292,6 +294,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.2)
+  bugsnag
   byebug
   decent_exposure
   devise
