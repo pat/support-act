@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :connection, :only => %i[ new show ]
   end
 
-  get "/auth/spotify/callback", to: "spotify/connections#create"
+  get "/auth/spotify/callback", :to => "spotify/connections#create"
 
   namespace :my do
     resource :dashboard, :only => :show

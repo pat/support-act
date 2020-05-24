@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_062158) do
+ActiveRecord::Schema.define(version: 2020_05_24_112448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2020_05_24_062158) do
     t.bigint "artist_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.jsonb "raw", default: {}, null: false
+    t.string "image"
     t.index ["artist_id"], name: "index_albums_on_artist_id"
     t.index ["identifier"], name: "index_albums_on_identifier", unique: true
     t.index ["url"], name: "index_albums_on_url"
@@ -36,6 +38,7 @@ ActiveRecord::Schema.define(version: 2020_05_24_062158) do
     t.string "mbid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.jsonb "raw", default: {}, null: false
     t.index ["identifier"], name: "index_artists_on_identifier", unique: true
     t.index ["url"], name: "index_artists_on_url"
   end

@@ -14,7 +14,7 @@ module Parsers
       fan.provider_cache_will_change!
 
       fan.provider_cache["latest_album_ids"] =
-        top_albums.collect { |hash| album_for(hash).id }
+        top_albums.collect { |object| album_for(object).id }
       fan.save
     end
 
@@ -22,54 +22,55 @@ module Parsers
 
     attr_reader :fan
 
-    def album_for(hash)
-      album = Album.find_by(:url => hash["url"])
+    def album_for(object)
+      album = Album.find_by(:url => object.uri)
 
       if album.nil?
         Album.create(
           :identifier => SecureRandom.uuid,
-          :name       => hash["name"],
-          :url        => hash["url"],
-          :mbid       => mbid(nil, hash["mbid"]),
-          :images     => images(hash["image"]),
-          :artist     => artist_for(hash["artist"])
+          :name       => object.name,
+          :url        => object.uri,
+          :image      => image(object.images),
+          :artist     => artist_for(object.artists.first),
+          :raw        => object.as_json
         )
       else
         album.update!(
-          :name   => hash["name"],
-          :mbid   => mbid(album, hash["mbid"]),
-          :images => images(hash["image"]),
-          :artist => artist_for(hash["artist"])
+          :name   => object.name,
+          :image  => image(object.images),
+          :artist => artist_for(object.artists.first),
+          :raw    => object.as_json
         )
 
         album
       end
     end
 
-    def artist_for(hash)
-      artist = Artist.find_by(:url => hash["url"])
+    def artist_for(object)
+      artist = Artist.find_by(:url => object.uri)
 
       if artist.nil?
         Artist.create(
           :identifier => SecureRandom.uuid,
-          :name       => hash["name"],
-          :url        => hash["url"],
-          :mbid       => mbid(nil, hash["mbid"])
+          :name       => object.name,
+          :url        => object.uri,
+          :raw        => object.as_json
         )
       else
         artist.update!(
-          :name => hash["name"],
-          :mbid => mbid(artist, hash["mbid"])
+          :name => object.name,
+          :raw  => object.as_json
         )
 
         artist
       end
     end
 
-    def images(array)
-      array.each_with_object({}) do |hash, result|
-        result[hash["size"]] = hash["content"]
-      end
+    def image(array)
+      image = array.sort_by { |hash| hash["width"] }&.last
+      return nil unless image
+
+      image["url"]
     end
 
     def spotify_user
@@ -77,11 +78,11 @@ module Parsers
     end
 
     def top_songs
-      spotify_user.top_tracks(:time_range => "short_term")
+      @top_songs ||= spotify_user.top_tracks(:limit => 50)
     end
 
     def top_albums
-      #
+      @top_albums ||= top_songs.collect(&:album).uniq
     end
   end
 end

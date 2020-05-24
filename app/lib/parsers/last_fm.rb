@@ -2,6 +2,13 @@
 
 module Parsers
   class LastFm
+    IMAGE_SIZE_RANKS = {
+      "small"      => 1,
+      "medium"     => 2,
+      "large"      => 3,
+      "extralarge" => 4
+    }.freeze
+
     def self.call(fan)
       new(fan).call
     end
@@ -31,6 +38,7 @@ module Parsers
           :name       => hash["name"],
           :url        => hash["url"],
           :mbid       => mbid(nil, hash["mbid"]),
+          :image      => image(hash["image"]),
           :images     => images(hash["image"]),
           :artist     => artist_for(hash["artist"])
         )
@@ -38,6 +46,7 @@ module Parsers
         album.update!(
           :name   => hash["name"],
           :mbid   => mbid(album, hash["mbid"]),
+          :image  => image(hash["image"]),
           :images => images(hash["image"]),
           :artist => artist_for(hash["artist"])
         )
@@ -64,6 +73,14 @@ module Parsers
 
         artist
       end
+    end
+
+    def image(array)
+      image = array.
+        sort_by { |hash| IMAGE_SIZE_RANKS.fetch(hash["size"], 0) }&.last
+      return nil unless image
+
+      image["content"]
     end
 
     def images(array)
