@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  before_action :authenticate
+  before_action :authenticate_fan!
 
   expose(:albums) do
     Album.
