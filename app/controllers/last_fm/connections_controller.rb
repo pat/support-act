@@ -10,8 +10,8 @@ module LastFm
       redirect_to(
         format(
           URL_PATTERN,
-          api_key: ENV["LAST_FM_API_KEY"],
-          url: last_fm_connection_url
+          :api_key => ENV["LAST_FM_API_KEY"],
+          :url     => last_fm_connection_url
         )
       )
     end

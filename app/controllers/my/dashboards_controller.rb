@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module My
   class DashboardsController < My::ApplicationController
     expose(:albums) { Album.latest_for_fan(current_fan) }
