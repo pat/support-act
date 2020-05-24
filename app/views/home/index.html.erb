@@ -1,6 +1,7 @@
 <% if fan_signed_in? %>
   <% if current_fan.provider.nil? %>
     <%= link_to "Connect to Last.FM", new_last_fm_connection_path %>
+    <%= link_to "Connect to Spotify", "/auth/spotify", :method => :post %>
   <% else %>
     <%= link_to "Dashboard", my_dashboard_path %>
     <%= link_to "Log out", destroy_fan_session_path, :method => :delete %>
