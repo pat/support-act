@@ -3,7 +3,7 @@
 class Parse
   def self.call(fan)
     case fan.provider
-    when "last_fm"
+    when "last.fm"
       Parsers::LastFm.call(fan)
     when "spotify"
       # Parsers::Spotify.call(fan)
