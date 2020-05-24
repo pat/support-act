@@ -16,6 +16,7 @@ gem "webpacker", "~> 4.0"
 
 gem "bootsnap", ">= 1.4.2", :require => false
 gem "decent_exposure"
+gem "devise"
 gem "lastfm"
 gem "postmark-rails"
 gem "rubocop"
