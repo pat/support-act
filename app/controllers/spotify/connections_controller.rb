@@ -14,7 +14,7 @@ module Spotify
         }
       )
 
-      # Parse.call(current_fan)
+      Parse.call(current_fan)
 
       redirect_to my_dashboard_path
     end
