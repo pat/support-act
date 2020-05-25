@@ -82,7 +82,7 @@ module Parsers
     end
 
     def top_albums
-      @top_albums ||= top_songs.collect(&:album).uniq
+      @top_albums ||= top_songs.collect(&:album).uniq { |album| album.uri }
     end
   end
 end
