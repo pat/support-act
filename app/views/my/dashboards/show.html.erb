@@ -1,5 +1,9 @@
-<div class="albums">
-  <% albums.each do |album| %>
-    <%= render :partial => "albums/album", :locals => {:album => album, :fan => current_fan, :purchases => purchases} %>
-  <% end %>
+<div class="page-albums wrapper">
+  <h1>Your suggested albums</h1>
+
+  <div class="albums">
+    <% albums.each do |album| %>
+      <%= render :partial => "albums/album", :locals => {:album => album, :fan => current_fan, :purchases => purchases} %>
+    <% end %>
+  </div>
 </div>
