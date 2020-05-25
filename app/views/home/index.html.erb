@@ -1,8 +1,8 @@
 <div class="fullycentered">
   <div class="buttons">
     <% if fan_signed_in? && current_fan.provider.nil? %>
-      <%= link_to "Connect to Last.FM", new_last_fm_connection_path %>
-      <%= link_to "Connect to Spotify", "/auth/spotify", :method => :post %>
+      <%= link_to "Connect to Last.FM", new_last_fm_connection_path, :class =>'button' %>
+      <%= link_to "Connect to Spotify", "/auth/spotify", :method => :post, :class => 'button primary' %>
     <% else %>
       <%= link_to "Log In", new_fan_session_path, :class => "button" %>
       <%= link_to "Sign Up", new_fan_registration_path, :class => "button primary" %>
