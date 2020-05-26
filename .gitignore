@@ -42,3 +42,5 @@ yarn-debug.log*
 
 .env
 .rubocop-*
+
+.DS_Store
