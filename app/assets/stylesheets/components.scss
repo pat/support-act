@@ -1,0 +1,85 @@
+@import "variables";
+@import "typography";
+
+// Buttons
+//
+// It defaults to secondary button style unless primary class is applied.
+
+.button {
+  @extend small;
+  display: inline-block;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  border-radius: $border_radius;
+  padding: ($spacing * 0.75) ($spacing * 1.5);
+  font-weight: bold;
+  text-decoration: none;
+  height: auto;
+
+  background: $colour_secondary;
+  color: white;
+
+  & + & {
+    margin-left: $spacing / 2;
+  }
+
+  &.primary {
+    background: $colour_primary;
+  }
+
+  &.tertiary {
+    border: 1px solid $colour_subtle;
+    background: transparent;
+    color: $colour_text;
+  }
+
+  &.small {
+    padding: ($spacing * 0.4) ($spacing * 0.8);
+  }
+
+  &.invisible {
+    border: none;
+    background: none;
+    color: inherit;
+  }
+}
+
+// Link groups
+
+.links {
+  @extend small;
+  display: flex;
+
+  li {
+    padding-right: $spacing / 2;
+
+    & + li {
+      padding-left: 16px;
+      position: relative;
+
+      &:before {
+        content: "•";
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}
+
+// Flashes
+
+.alert,
+.notice {
+  margin: $spacing;
+  padding: $spacing;
+}
+
+.alert {
+  background-color: $colour_alert;
+}
+
+.notice {
+  background-color: $colour_notice;
+}

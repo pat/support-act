@@ -10,8 +10,25 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <header class="header">
+      <div class="wrapper">
+        <h1><%= link_to "SupportAct", "/", class: 'title' %></h1>
+
+        <nav id="nav">
+          <% if fan_signed_in? && !current_fan.provider.nil? %>
+            <%= link_to "Dashboard", my_dashboard_path %>
+            <%= link_to "Log out", destroy_fan_session_path, :method => :delete, class: 'button tertiary' %>
+          <% end %>
+        </nav>
+      </div>
+    </header>
+
+    <% if notice %>
+      <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert"><%= alert %></p>
+    <% end %>
 
     <%= yield %>
   </body>

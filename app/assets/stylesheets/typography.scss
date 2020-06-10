@@ -1,0 +1,54 @@
+@import "variables";
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap");
+
+body {
+  font-family: $font_body;
+  font-size: $font_size_base;
+  line-height: $font_leading_base;
+}
+
+a {
+  color: $colour_link;
+  font-weight: 500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 1em;
+  font-weight: $font_weight_bold;
+  line-height: $font_leading_title;
+}
+
+h1 {
+  font-size: 44px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 25px;
+}
+
+h4 {
+  font-size: $font_size_base;
+}
+
+label {
+  font-weight: 500;
+}
+
+small,
+.small {
+  font-size: 16px;
+  line-height: 1.4;
+}
