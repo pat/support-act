@@ -23,47 +23,27 @@ module Parsers
     attr_reader :fan
 
     def album_for(object)
-      album = Album.find_by(:url => object.uri)
+      album = Album.find_or_initialize_by(:url => object.uri)
 
-      if album.nil?
-        Album.create(
-          :identifier => SecureRandom.uuid,
-          :name       => object.name,
-          :url        => object.uri,
-          :image      => image(object.images),
-          :artist     => artist_for(object.artists.first),
-          :raw        => object.as_json
-        )
-      else
-        album.update!(
-          :name   => object.name,
-          :image  => image(object.images),
-          :artist => artist_for(object.artists.first),
-          :raw    => object.as_json
-        )
+      album.update!(
+        :name   => object.name,
+        :image  => image(object.images),
+        :artist => artist_for(object.artists.first),
+        :raw    => object.as_json
+      )
 
-        album
-      end
+      album
     end
 
     def artist_for(object)
-      artist = Artist.find_by(:url => object.uri)
+      artist = Artist.find_or_initialize_by(:url => object.uri)
 
-      if artist.nil?
-        Artist.create(
-          :identifier => SecureRandom.uuid,
-          :name       => object.name,
-          :url        => object.uri,
-          :raw        => object.as_json
-        )
-      else
-        artist.update!(
-          :name => object.name,
-          :raw  => object.as_json
-        )
+      artist.update!(
+        :name => object.name,
+        :raw  => object.as_json
+      )
 
-        artist
-      end
+      artist
     end
 
     def image(array)
@@ -82,7 +62,7 @@ module Parsers
     end
 
     def top_albums
-      @top_albums ||= top_songs.collect(&:album).uniq { |album| album.uri }
+      @top_albums ||= top_songs.collect(&:album).uniq(&:uri)
     end
   end
 end

@@ -30,49 +30,28 @@ module Parsers
     attr_reader :fan
 
     def album_for(hash)
-      album = Album.find_by(:url => hash["url"])
+      album = Album.find_or_initialize_by(:url => hash["url"])
 
-      if album.nil?
-        Album.create(
-          :identifier => SecureRandom.uuid,
-          :name       => hash["name"],
-          :url        => hash["url"],
-          :mbid       => mbid(nil, hash["mbid"]),
-          :image      => image(hash["image"]),
-          :images     => images(hash["image"]),
-          :artist     => artist_for(hash["artist"])
-        )
-      else
-        album.update!(
-          :name   => hash["name"],
-          :mbid   => mbid(album, hash["mbid"]),
-          :image  => image(hash["image"]),
-          :images => images(hash["image"]),
-          :artist => artist_for(hash["artist"])
-        )
+      album.update!(
+        :name   => hash["name"],
+        :mbid   => mbid(nil, hash["mbid"]),
+        :image  => image(hash["image"]),
+        :images => images(hash["image"]),
+        :artist => artist_for(hash["artist"])
+      )
 
-        album
-      end
+      album
     end
 
     def artist_for(hash)
-      artist = Artist.find_by(:url => hash["url"])
+      artist = Artist.find_or_initialize_by(:url => hash["url"])
 
-      if artist.nil?
-        Artist.create(
-          :identifier => SecureRandom.uuid,
-          :name       => hash["name"],
-          :url        => hash["url"],
-          :mbid       => mbid(nil, hash["mbid"])
-        )
-      else
-        artist.update!(
-          :name => hash["name"],
-          :mbid => mbid(artist, hash["mbid"])
-        )
+      artist.update!(
+        :name => hash["name"],
+        :mbid => mbid(artist, hash["mbid"])
+      )
 
-        artist
-      end
+      artist
     end
 
     def image(array)

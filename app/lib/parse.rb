@@ -8,6 +8,7 @@ class Parse
     when "spotify"
       Parsers::Spotify.call(fan)
     when NilClass
+      # Do nothing
     else
       raise "Unknown provider"
     end
