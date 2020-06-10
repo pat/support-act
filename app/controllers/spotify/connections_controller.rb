@@ -5,8 +5,6 @@ module Spotify
     before_action :authenticate_fan!
 
     def create
-      spotify_user = RSpotify::User.new(request.env["omniauth.auth"])
-
       current_fan.update!(
         :provider          => "spotify",
         :provider_identity => spotify_user.id,
@@ -19,6 +17,12 @@ module Spotify
       Parse.call(current_fan)
 
       redirect_to my_dashboard_path
+    end
+
+    private
+
+    def spotify_user
+      @spotify_user ||= RSpotify::User.new(request.env["omniauth.auth"])
     end
   end
 end

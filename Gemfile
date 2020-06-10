@@ -14,8 +14,8 @@ gem "sass-rails", ">= 6"
 gem "turbolinks", "~> 5"
 gem "webpacker", "~> 4.0"
 
-gem "bugsnag"
 gem "bootsnap", ">= 1.4.2", :require => false
+gem "bugsnag"
 gem "decent_exposure"
 gem "devise"
 gem "lastfm"

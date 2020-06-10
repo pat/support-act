@@ -1,7 +1,3 @@
-ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
-  html_tag.html_safe
-end
-
 # frozen_string_literal: true
 
 # Load the Rails application.

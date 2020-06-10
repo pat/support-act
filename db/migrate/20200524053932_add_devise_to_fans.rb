@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class AddDeviseToFans < ActiveRecord::Migration[6.0]
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   def self.up
-    change_table :fans do |t|
+    change_table :fans, :bulk => true do |t|
       ## Database authenticatable
       t.string :encrypted_password, :null => false, :default => ""
 
@@ -27,7 +29,8 @@ class AddDeviseToFans < ActiveRecord::Migration[6.0]
       t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## Lockable
-      # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
+      # Only if lock strategy is :failed_attempts
+      # t.integer  :failed_attempts, default: 0, null: false
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
     end
@@ -39,7 +42,7 @@ class AddDeviseToFans < ActiveRecord::Migration[6.0]
   end
 
   def self.down
-    change_table :fans do |t|
+    change_table :fans, :bulk => true do |t|
       t.remove_index :email
       t.remove_index :reset_password_token
       t.remove_index :confirmation_token
@@ -59,4 +62,6 @@ class AddDeviseToFans < ActiveRecord::Migration[6.0]
       t.remove :unconfirmed_email
     end
   end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
 end

@@ -17,13 +17,10 @@ module LastFm
     end
 
     def show
-      last_fm_session = last_fm.auth.get_session(:token => params[:token])
-      last_fm.session = last_fm_session["key"]
-
       current_fan.update!(
         :provider          => "last.fm",
-        :provider_identity => last_fm.user.get_info["name"],
-        :provider_cache    => {"token" => last_fm_session["key"]}
+        :provider_identity => last_fm_user.get_info["name"],
+        :provider_cache    => {"token" => last_fm.session}
       )
 
       Parse.call(current_fan)
@@ -34,7 +31,15 @@ module LastFm
     private
 
     def last_fm
-      @last_fm ||= Lastfm.new(ENV["LAST_FM_API_KEY"], ENV["LAST_FM_API_SECRET"])
+      @last_fm ||= Lastfm.new(
+        ENV["LAST_FM_API_KEY"], ENV["LAST_FM_API_SECRET"]
+      ).tap do |lfm|
+        lfm.session = lfm.auth.get_session(:token => params[:token])
+      end
+    end
+
+    def last_fm_user
+      last_fm.user
     end
   end
 end
