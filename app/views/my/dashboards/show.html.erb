@@ -1,9 +1,22 @@
-<div class="page-albums wrapper">
-  <h1>Your suggested albums</h1>
+<% if current_fan.provider.nil? %>
+  <p>To make recommendations based on what you've been listening to lately, you'll need to connect either a <a href="https://www.last.fm" target="_blank">Last.fm</a> account or <a href="https://www.spotify.com" target="_blank">Spotify</a> account:</p>
 
-  <div class="albums">
-    <% albums.each do |album| %>
-      <%= render :partial => "albums/album", :locals => {:album => album, :fan => current_fan, :purchases => purchases} %>
-    <% end %>
+  <p>
+    <%= link_to "Connect to Last.fm", new_last_fm_connection_path, :class =>'button' %>
+    <%= link_to "Connect to Spotify", "/auth/spotify", :method => :post, :class => 'button primary' %>
+  </p>
+
+  <p>Last.fm provides more detailed statistics, so that's certainly recommended, but if you've only got Spotify, you'll still get some recommendations from the past several months.</p>
+
+  <p>If you <em>really</em> want those better statistics, Last.fm is a free service and <a href="https://www.last.fm/about/trackmymusic" target="_blank">can be connected to Spotify accounts</a> (along with many other services as well, if you're not using Spotify).</p>
+<% else %>
+  <div class="page-albums wrapper">
+    <h1>Your suggested albums</h1>
+
+    <div class="albums">
+      <% albums.each do |album| %>
+        <%= render :partial => "albums/album", :locals => {:album => album, :fan => current_fan, :purchases => purchases} %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>

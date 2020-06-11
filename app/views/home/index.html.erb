@@ -1,11 +1,12 @@
-<div class="fullycentered">
-  <div class="buttons">
-    <% if fan_signed_in? && current_fan.provider.nil? %>
-      <%= link_to "Connect to Last.FM", new_last_fm_connection_path, :class =>'button' %>
-      <%= link_to "Connect to Spotify", "/auth/spotify", :method => :post, :class => 'button primary' %>
-    <% else %>
-      <%= link_to "Log In", new_fan_session_path, :class => "button" %>
-      <%= link_to "Sign Up", new_fan_registration_path, :class => "button primary" %>
-    <% end %>
-  </div>
+<div class="intro">
+  <p>Music streaming services are super convenient 🎧</p>
+  <p>&hellip; but musicians earn a pittance from streaming royalties. 📉</p>
+  <p>&hellip; so maybe buying an album occasionally would help? 💰</p>
+  <p>&hellip; and we can send you some suggestions based on what you listen to. ☺️</p>
 </div>
+
+<p>Support Act sends you a monthly email with a list of albums that you've been listening to lately - based on either your Last.fm or Spotify account information - that you may wish to purchase, to better support the musicians you love. (And Support Act doesn't cost anything for you to use! 😎)</p>
+
+<p>We don't tell you where to buy it, nor what format. You can mark albums as purchased so we don't suggest them again. And we're not saying you should stop using streaming services! We just want to provide some gentle encouragement to help artists out a touch more, if you're in a position to do so.</p>
+
+<p>Want to give it a shot? <%= link_to "Sign up now", new_fan_registration_path %> ⏩</p>

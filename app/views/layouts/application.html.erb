@@ -12,12 +12,15 @@
   <body>
     <header class="header">
       <div class="wrapper">
-        <h1><%= link_to "SupportAct", "/", class: 'title' %></h1>
+        <h1><%= link_to "Support Act", "/", class: 'title' %></h1>
 
         <nav id="nav">
-          <% if fan_signed_in? && !current_fan.provider.nil? %>
+          <% if fan_signed_in? %>
             <%= link_to "Dashboard", my_dashboard_path %>
             <%= link_to "Log out", destroy_fan_session_path, :method => :delete, class: 'button tertiary' %>
+          <% else %>
+            <%= link_to "Log In", new_fan_session_path, :class => "button" %>
+            <%= link_to "Sign Up", new_fan_registration_path, :class => "button primary" %>
           <% end %>
         </nav>
       </div>
@@ -30,6 +33,12 @@
       <p class="alert"><%= alert %></p>
     <% end %>
 
-    <%= yield %>
+    <div class="content">
+      <%= yield %>
+    </div>
+
+    <footer>
+      <p>Support Act is copyright &copy; 2020 <a href="https://freelancing-gods.com" target="_blank">Pat Allan</a>, and has been built by him with support from the wonderful folks at <a href="http://www.superhero-studios.com" target="_blank">Superhero Studios</a>. If you've suggestions on how this service could be improved, please <a href="https://twitter.com/pat" target="_blank">get in touch</a>.</p>
+    </footer>
   </body>
 </html>
