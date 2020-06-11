@@ -12,7 +12,10 @@
   <body>
     <header class="header">
       <div class="wrapper">
-        <h1><%= link_to "Support Act", "/", class: 'title' %></h1>
+        <h1>
+          <%= link_to "Support Act", "/", class: 'title' %>
+          <span class="tagline">&mdash; helping you support your favourite acts ❤️</span>
+        </h1>
 
         <nav id="nav">
           <% if fan_signed_in? %>
