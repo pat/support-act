@@ -34,7 +34,7 @@ module LastFm
       @last_fm ||= Lastfm.new(
         ENV["LAST_FM_API_KEY"], ENV["LAST_FM_API_SECRET"]
       ).tap do |lfm|
-        lfm.session = lfm.auth.get_session(:token => params[:token])
+        lfm.session = lfm.auth.get_session(:token => params[:token])["key"]
       end
     end
 
