@@ -16,6 +16,7 @@ AllCops:
 Metrics/BlockLength:
   Exclude:
     - 'config/environments/*'
+    - 'spec/**/*_spec.rb'
 
 # 0.80
 
