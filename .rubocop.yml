@@ -51,3 +51,12 @@ Style/SlicingWithRange:
 
 Lint/DeprecatedOpenSSLConstant:
   Enabled: true
+
+# 0.85
+
+Lint/MixedRegexpCaptureTypes:
+  Enabled: true
+Style/RedundantRegexpCharacterClass:
+  Enabled: true
+Style/RedundantRegexpEscape:
+  Enabled: true
