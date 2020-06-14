@@ -3,8 +3,7 @@
 class SuggestionsMailer < ApplicationMailer
   def suggest(fan)
     @fan = fan
-    @albums = Album.latest_for_fan(fan)
-    @purchases = Purchase.for_fan_and_albums(fan, @albums)
+    @albums = Album.not_purchased_by(fan)
 
     mail :to => fan.email, :subject => "Monthly Suggestions"
   end

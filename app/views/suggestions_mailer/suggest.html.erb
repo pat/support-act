@@ -1,10 +1,10 @@
 <p>Hi <%= @fan.provider_identity %>,</p>
 
-<p>Here are the latest top albums that you've been listening to, as logged by Last.FM. If you haven't already, you may want to purchase them alongside the small royalties for streaming.</p>
+<p>Here are the latest top albums that you've been listening to that you haven't marked as purchased. If you do buy one to support the artist, mark it as purchased and we won't suggest it again.</p>
 
 <div class="albums">
   <% @albums.each do |album| %>
-    <%= render :partial => "albums/album", :locals => {:album => album, :fan => @fan, :purchases => @purchases} %>
+    <%= render :partial => "albums/album", :locals => {:album => album, :fan => @fan, :purchased => false} %>
   <% end %>
 </div>
 
