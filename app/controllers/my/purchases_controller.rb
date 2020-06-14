@@ -2,13 +2,34 @@
 
 module My
   class PurchasesController < My::ApplicationController
-    def create
+    def new
       fan = Fan.find_by!(:identifier => params[:fan_uuid])
       album = Album.find_by!(:identifier => params[:album_uuid])
 
       Purchase.create!(:fan => fan, :album => album)
 
       redirect_to my_dashboard_path
+    end
+
+    def create
+      Purchase.create!(:fan => current_fan, :album_id => params[:album_id])
+
+      respond_to do |format|
+        format.html { redirect_to my_dashboard_path }
+        format.js { render :json => {:status => "purchased"} }
+      end
+    end
+
+    def destroy
+      Purchase.find_by!(
+        :fan      => current_fan,
+        :album_id => params[:album_id]
+      ).destroy
+
+      respond_to do |format|
+        format.html { redirect_to my_dashboard_path }
+        format.js { render :json => {:status => "unpurchased"} }
+      end
     end
   end
 end

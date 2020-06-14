@@ -1,20 +1,18 @@
-<%= link_to my_purchase_url(fan.identifier, album.identifier), :rel => :nofollow, class: ['album', purchased ? 'purchased' : ''] do %>
-  <div class="image">
-    <% if album.image %>
-      <%= image_tag album.image %>
+<div class="image">
+  <% if album.image %>
+    <%= image_tag album.image %>
+  <% end %>
+</div>
+
+<div class="info">
+  <p class="album-name"><%= album.name %></p>
+  <p class="album-artist"><%= album.artist.name %></p>
+
+  <p class="album-purchase">
+    <% if purchased %>
+      <span class="button small tertiary">Purchased</span>
+    <% else %>
+      <span class="button small">Mark as Purchased</span>
     <% end %>
-  </div>
-
-  <div class="info">
-    <p class="album-name"><%= album.name %></p>
-    <p class="album-artist"><%= album.artist.name %></p>
-
-    <p class="album-purchase">
-      <% if purchased %>
-        <span class="button small tertiary">Purchased</span>
-      <% else %>
-        <span class="button small">Mark as Purchased</span>
-      <% end %>
-    </p>
-  </div>
-<% end %>
+  </p>
+</div>

@@ -4,7 +4,9 @@
 
 <div class="albums">
   <% @albums.each do |album| %>
-    <%= render :partial => "albums/album", :locals => {:album => album, :fan => @fan, :purchased => false} %>
+    <%= link_to my_purchase_url(@fan.identifier, album.identifier), :rel => :nofollow, class: 'album' do %>
+      <%= render :partial => "albums/album", :locals => {:album => album, :fan => @fan, :purchased => false} %>
+    <% end %>
   <% end %>
 </div>
 

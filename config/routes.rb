@@ -11,8 +11,11 @@ Rails.application.routes.draw do
 
   namespace :my do
     resource :dashboard, :only => :show
+    resources :albums, :only => [] do
+      resource :purchases, :only => %i[ create destroy ]
+    end
 
-    get "/purchases/:fan_uuid/:album_uuid" => "purchases#create",
+    get "/purchases/:fan_uuid/:album_uuid" => "purchases#new",
       :as => :purchase # rubocop:disable Layout/HashAlignment
   end
 
