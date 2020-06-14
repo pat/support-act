@@ -1,7 +1,3 @@
-<%
-  purchased = purchases.any? { |purchase| purchase.album_id == album.id }
-%>
-
 <%= link_to my_purchase_url(fan.identifier, album.identifier), :rel => :nofollow, class: ['album', purchased ? 'purchased' : ''] do %>
   <div class="image">
     <% if album.image %>

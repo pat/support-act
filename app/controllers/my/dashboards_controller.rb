@@ -2,7 +2,7 @@
 
 module My
   class DashboardsController < My::ApplicationController
-    expose(:albums) { Album.latest_for_fan(current_fan) }
-    expose(:purchases) { Purchase.for_fan_and_albums(current_fan, albums) }
+    expose(:unpurchased_albums) { Album.not_purchased_by(current_fan) }
+    expose(:purchased_albums) { Album.purchased_by(current_fan) }
   end
 end

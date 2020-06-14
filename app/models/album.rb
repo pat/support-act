@@ -7,10 +7,28 @@ class Album < ApplicationRecord
 
   def self.latest_for_fan(fan)
     ids = fan.provider_cache["latest_album_ids"][0..19]
-    objects = where(:id => ids).includes(:artist).to_a
+    objects = yield(ids).includes(:artist).to_a
 
-    ids.collect do |id|
-      objects.detect { |object| object.id == id }
+    ids.collect { |id| objects.detect { |object| object.id == id } }.compact
+  end
+
+  def self.not_purchased_by(fan)
+    latest_for_fan(fan) do |ids|
+      where(
+        "id IN (?) AND id NOT IN (?)",
+        ids,
+        Purchase.where(:fan => fan).select(:album_id)
+      )
+    end
+  end
+
+  def self.purchased_by(fan)
+    latest_for_fan(fan) do |ids|
+      where(
+        "id IN (?) AND id IN (?)",
+        ids,
+        Purchase.where(:fan => fan).select(:album_id)
+      )
     end
   end
 

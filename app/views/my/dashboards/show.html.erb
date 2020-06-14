@@ -11,11 +11,19 @@
   <p>If you <em>really</em> want those better statistics, Last.fm is a free service and <a href="https://www.last.fm/about/trackmymusic" target="_blank">can be connected to Spotify accounts</a> (along with many other services as well, if you're not using Spotify).</p>
 <% else %>
   <div class="page-albums wrapper">
-    <h1>Your suggested albums</h1>
+    <h2>Your suggested albums</h2>
 
     <div class="albums">
-      <% albums.each do |album| %>
-        <%= render :partial => "albums/album", :locals => {:album => album, :fan => current_fan, :purchases => purchases} %>
+      <% unpurchased_albums.each do |album| %>
+        <%= render :partial => "albums/album", :locals => {:album => album, :fan => current_fan, :purchased => false} %>
+      <% end %>
+    </div>
+
+    <h2>Your purchased albums</h2>
+
+    <div class="albums">
+      <% purchased_albums.each do |album| %>
+        <%= render :partial => "albums/album", :locals => {:album => album, :fan => current_fan, :purchased => true} %>
       <% end %>
     </div>
   </div>
