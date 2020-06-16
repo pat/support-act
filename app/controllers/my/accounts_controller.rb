@@ -13,6 +13,13 @@ module My
       end
     end
 
+    def destroy
+      Purchase.where(:fan => current_fan).delete_all
+      current_fan.destroy
+
+      redirect_to "/", :notice => "Your account has been deleted."
+    end
+
     private
 
     def fan_params

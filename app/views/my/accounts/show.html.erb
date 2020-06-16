@@ -43,12 +43,20 @@
 
     <p>If you change your mind later, you can always reconnect your account.</p>
 
-    <%= link_to "Disconnect Last.fm", last_fm_connection_path, method: :delete, class: "button", data: {confirm: "Are you sure? This will delete all your Last.fm information on Support Act."} %>
+    <p><%= link_to "Disconnect Last.fm", last_fm_connection_path, method: :delete, class: "button", data: {confirm: "Are you sure? This will delete all your Last.fm information on Support Act."} %></p>
   <% elsif fan.provider == "spotify" %>
     <p>Support Act is currently linked to your Spotify account. If you wish to remove this connection, use the button below and all of your account information will be removed from Support Act.</p>
 
     <p>If you change your mind later, you can always reconnect your account.</p>
 
-    <%= link_to "Disconnect Spotify", spotify_connection_path, method: :delete, class: "button", data: {confirm: "Are you sure? This will delete all your Spotify information on Support Act."} %>
+    <p><%= link_to "Disconnect Spotify", spotify_connection_path, method: :delete, class: "button", data: {confirm: "Are you sure? This will delete all your Spotify information on Support Act."} %></p>
   <% end %>
+
+  <h2>Removing your account</h2>
+
+  <p>If you no longer wish to use Support Act, please click the button below to delete your account. All of your account data - the connection to Last.fm or Spotify, your purchased albums, your email and password - will be deleted permanently.</p>
+
+  <p>Of course, there's nothing to stop you from signing up again later if you change your mind!</p>
+
+  <p><%= link_to "Delete Account", my_account_path, method: :delete, class: "button", data: {confirm: "Are you sure? This will delete your entire account and all of your data on Support Act."} %></p>
 </div>

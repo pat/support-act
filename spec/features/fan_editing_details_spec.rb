@@ -93,4 +93,18 @@ RSpec.describe "Fan editing details", :type => :feature do
       :provider_cache    => {}
     )
   end
+
+  it "deleting the account" do
+    click_link "My Account"
+    click_link "Delete Account"
+
+    expect(page).to have_content("Your account has been deleted")
+
+    click_link "Log In"
+    fill_in "Email", :with => fan.email
+    fill_in "Password", :with => fan.password
+    click_button "Log in"
+
+    expect(page).to have_content("Invalid Email or password")
+  end
 end
