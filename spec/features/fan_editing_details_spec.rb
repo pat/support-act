@@ -24,8 +24,10 @@ RSpec.describe "Fan editing details", :type => :feature do
   it "changing email address" do
     click_link "My Account"
 
-    fill_in "Email", :with => "pat@different.domain"
-    click_button "Save"
+    within(".edit-fan-email") do
+      fill_in "Email", :with => "pat@different.domain"
+      click_button "Save"
+    end
 
     expect(page).to have_content("New details have been saved")
     expect(Fan.first.unconfirmed_email).to eq("pat@different.domain")
@@ -38,5 +40,21 @@ RSpec.describe "Fan editing details", :type => :feature do
     email.click_link "Confirm my account"
 
     expect(Fan.first.email).to eq("pat@different.domain")
+  end
+
+  it "changing password" do
+    click_link "My Account"
+
+    within(".edit-fan-password") do
+      fill_in "Password", :with => "re:member"
+      fill_in "Confirm Password", :with => "re:member"
+      click_button "Save"
+    end
+
+    fill_in "Email", :with => fan.email
+    fill_in "Password", :with => "re:member"
+    click_button "Log in"
+
+    expect(page).to have_content("Signed in successfully")
   end
 end
