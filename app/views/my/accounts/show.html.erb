@@ -35,4 +35,20 @@
       <%= f.submit "Save", class: 'primary' %>
     </div>
   <% end %>
+
+  <h2>Connections</h2>
+
+  <% if fan.provider == "last.fm" %>
+    <p>Support Act is currently linked to your Last.fm account. If you wish to remove this connection, use the button below and all of your account information will be removed from Support Act.</p>
+
+    <p>If you change your mind later, you can always reconnect your account.</p>
+
+    <%= link_to "Disconnect Last.fm", last_fm_connection_path, method: :delete, class: "button", data: {confirm: "Are you sure? This will delete all your Last.fm information on Support Act."} %>
+  <% elsif fan.provider == "spotify" %>
+    <p>Support Act is currently linked to your Spotify account. If you wish to remove this connection, use the button below and all of your account information will be removed from Support Act.</p>
+
+    <p>If you change your mind later, you can always reconnect your account.</p>
+
+    <%= link_to "Disconnect Spotify", spotify_connection_path, method: :delete, class: "button", data: {confirm: "Are you sure? This will delete all your Spotify information on Support Act."} %>
+  <% end %>
 </div>

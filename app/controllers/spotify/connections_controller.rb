@@ -19,6 +19,16 @@ module Spotify
       redirect_to my_dashboard_path
     end
 
+    def destroy
+      current_fan.update!(
+        :provider          => nil,
+        :provider_identity => nil,
+        :provider_cache    => {}
+      )
+
+      redirect_to my_dashboard_path, :notice => "Spotify has been disconnected"
+    end
+
     private
 
     def spotify_user

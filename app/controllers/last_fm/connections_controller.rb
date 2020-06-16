@@ -28,6 +28,16 @@ module LastFm
       redirect_to my_dashboard_path
     end
 
+    def destroy
+      current_fan.update!(
+        :provider          => nil,
+        :provider_identity => nil,
+        :provider_cache    => {}
+      )
+
+      redirect_to my_dashboard_path, :notice => "Last.fm has been disconnected"
+    end
+
     private
 
     def last_fm

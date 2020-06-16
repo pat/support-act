@@ -4,10 +4,14 @@ Rails.application.routes.draw do
   devise_for :fans
 
   namespace :last_fm do
-    resource :connection, :only => %i[ new show ]
+    resource :connection, :only => %i[ new show destroy ]
   end
 
   get "/auth/spotify/callback", :to => "spotify/connections#create"
+
+  namespace :spotify do
+    resource :connection, :only => %i[ destroy ]
+  end
 
   namespace :my do
     resource :dashboard, :only => :show

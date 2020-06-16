@@ -57,4 +57,40 @@ RSpec.describe "Fan editing details", :type => :feature do
 
     expect(page).to have_content("Signed in successfully")
   end
+
+  it "disconnecting last.fm" do
+    fan.update(
+      :provider          => "last.fm",
+      :provider_identity => "freelancing_god",
+      :provider_cache    => {"token" => SecureRandom.uuid}
+    )
+
+    click_link "My Account"
+    click_link "Disconnect Last.fm"
+
+    expect(page).to have_content("Last.fm has been disconnected")
+    expect(fan.reload).to have_attributes(
+      :provider          => nil,
+      :provider_identity => nil,
+      :provider_cache    => {}
+    )
+  end
+
+  it "disconnecting Spotify" do
+    fan.update(
+      :provider          => "spotify",
+      :provider_identity => "freelancing_god",
+      :provider_cache    => {"token" => SecureRandom.uuid}
+    )
+
+    click_link "My Account"
+    click_link "Disconnect Spotify"
+
+    expect(page).to have_content("Spotify has been disconnected")
+    expect(fan.reload).to have_attributes(
+      :provider          => nil,
+      :provider_identity => nil,
+      :provider_cache    => {}
+    )
+  end
 end
