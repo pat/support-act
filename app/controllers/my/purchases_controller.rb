@@ -12,7 +12,7 @@ module My
     end
 
     def create
-      Purchase.create!(:fan => current_fan, :album_id => params[:album_id])
+      Purchase.create(:fan => current_fan, :album_id => params[:album_id])
 
       respond_to do |format|
         format.html { redirect_to my_dashboard_path }
@@ -21,10 +21,10 @@ module My
     end
 
     def destroy
-      Purchase.find_by!(
+      Purchase.find_by(
         :fan      => current_fan,
         :album_id => params[:album_id]
-      ).destroy
+      )&.destroy
 
       respond_to do |format|
         format.html { redirect_to my_dashboard_path }
