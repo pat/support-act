@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :my do
     resource :dashboard, :only => :show
+    resource :account, :only => %i[ show update ]
     resources :albums, :only => [] do
       resource :purchases, :only => %i[ create destroy ]
     end

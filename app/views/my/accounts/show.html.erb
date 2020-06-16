@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <h2>Edit Account Details</h2>
+
+  <%= form_for(fan, url: my_account_path) do |f| %>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autocomplete: "email" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Save", class: 'primary' %>
+    </div>
+  <% end %>
+</div>

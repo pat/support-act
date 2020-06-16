@@ -9,6 +9,7 @@ if Rails.env.production?
 end
 require "rspec/rails"
 require "capybara/rspec"
+require "capybara/email/rspec"
 
 # Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |f| require f }
 
