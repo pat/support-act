@@ -6,7 +6,10 @@ namespace :suggestions do
 
     Fan.find_each do |fan|
       Parse.call(fan)
-      SuggestionsMailer.suggest(fan).deliver_now
+
+      if Album.not_purchased_by(fan).any?
+        SuggestionsMailer.suggest(fan).deliver_now
+      end
     end
   end
 end
