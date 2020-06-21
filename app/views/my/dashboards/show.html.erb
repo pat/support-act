@@ -13,6 +13,8 @@
   <div class="page-albums wrapper">
     <h2>Your suggested albums</h2>
 
+    <p>These are albums you've been listening to recently, but you haven't marked as purchased. Perhaps you'd like to buy a copy (in whichever format and from whatever location you wish) to support musicians more directly?</p>
+
     <div class="albums">
       <% unpurchased_albums.each do |album| %>
         <%= link_to my_album_purchases_path(album), class: 'album unpurchased', method: :post, remote: true, id: "album-#{album.id}" do %>
