@@ -8,7 +8,8 @@ module My
 
       Purchase.create!(:fan => fan, :album => album)
 
-      redirect_to my_dashboard_path
+      redirect_to my_dashboard_path,
+        :notice => "#{album.name} is now marked as purchased."
     end
 
     def create
