@@ -96,19 +96,39 @@
   flex-direction: row;
   text-decoration: none;
   color: $colour_black;
-}
 
-.album .image {
-  width: 300px;
-  height: 300px;
-  max-width: 300px;
-  margin: 1em;
-}
+  .image {
+    width: 300px;
+    height: 300px;
+    max-width: 300px;
+    margin: 1em;
 
-.album .image img {
-  width: 300px;
-}
+    img {
+      width: 300px;
+    }
+  }
 
-.album .album-name {
-  font-weight: bold;
+  .album-name {
+    font-weight: bold;
+  }
+
+  &.unpurchased .album-purchase {
+    .purchase {
+      display: inline;
+    }
+
+    .unpurchase {
+      display: none;
+    }
+  }
+
+  &.purchased .album-purchase {
+    .purchase {
+      display: none;
+    }
+
+    .unpurchase {
+      display: inline;
+    }
+  }
 }

@@ -15,7 +15,7 @@
 
     <div class="albums">
       <% unpurchased_albums.each do |album| %>
-        <%= link_to my_album_purchases_path(album), class: 'album', method: :post, remote: true do %>
+        <%= link_to my_album_purchases_path(album), class: 'album unpurchased', method: :post, remote: true, id: "album-#{album.id}" do %>
           <%= render :partial => "albums/album", :locals => {:album => album, :fan => current_fan, :purchased => false} %>
         <% end %>
       <% end %>
@@ -25,7 +25,7 @@
 
     <div class="albums">
       <% purchased_albums.each do |album| %>
-        <%= link_to my_album_purchases_path(album), class: 'album purchased', method: :delete, remote: true do %>
+        <%= link_to my_album_purchases_path(album), class: 'album purchased', method: :delete, remote: true, id: "album-#{album.id}" do %>
           <%= render :partial => "albums/album", :locals => {:album => album, :fan => current_fan, :purchased => true} %>
         <% end %>
       <% end %>

@@ -9,10 +9,7 @@
   <p class="album-artist"><%= album.artist.name %></p>
 
   <p class="album-purchase">
-    <% if purchased %>
-      <span class="button small tertiary">Purchased</span>
-    <% else %>
-      <span class="button small">Mark as Purchased</span>
-    <% end %>
+    <span class="button small tertiary unpurchase">Purchased</span>
+    <span class="button small purchase">Mark as Purchased</span>
   </p>
 </div>

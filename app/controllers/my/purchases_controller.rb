@@ -16,7 +16,7 @@ module My
 
       respond_to do |format|
         format.html { redirect_to my_dashboard_path }
-        format.js { render :json => {:status => "purchased"} }
+        format.js
       end
     end
 
@@ -28,7 +28,7 @@ module My
 
       respond_to do |format|
         format.html { redirect_to my_dashboard_path }
-        format.js { render :json => {:status => "unpurchased"} }
+        format.js
       end
     end
   end
