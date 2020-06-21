@@ -80,6 +80,8 @@ GEM
       mail
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    css_parser (1.7.1)
+      addressable
     decent_exposure (3.0.2)
       activesupport (>= 4.0)
     devise (4.7.2)
@@ -102,6 +104,7 @@ GEM
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashie (4.1.0)
+    htmlentities (4.3.4)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httparty (0.18.1)
@@ -165,6 +168,13 @@ GEM
     postmark-rails (0.20.0)
       actionmailer (>= 3.0.0)
       postmark (~> 1.15)
+    premailer (1.11.1)
+      addressable
+      css_parser (>= 1.6.0)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.11.1)
+      actionmailer (>= 3)
+      premailer (~> 1.7, >= 1.7.9)
     public_suffix (3.1.1)
     puma (4.3.5)
       nio4r (~> 2.0)
@@ -322,6 +332,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection
   pg (~> 1.2)
   postmark-rails
+  premailer-rails
   puma (~> 4.1)
   rails (~> 6.0.3)
   rspec-rails

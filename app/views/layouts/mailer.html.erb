@@ -2,35 +2,12 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style>
-      .albums {
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      .album {
-        display: flex;
-        flex-direction: row;
-      }
-
-      .album .image {
-        width: 150px;
-        height: 150px;
-        max-width: 150px;
-        margin: 1em;
-      }
-
-      .album .image img {
-        width: 150px;
-      }
-
-      .album .album-name {
-        font-weight: bold;
-      }
-    </style>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="content">
+      <%= yield %>
+    </div>
   </body>
 </html>
