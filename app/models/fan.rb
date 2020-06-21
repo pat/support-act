@@ -8,6 +8,9 @@ class Fan < ApplicationRecord
 
   before_validation :set_identifier, :on => :create
 
+  scope :confirmed, lambda { where("confirmed_at IS NOT NULL") }
+  scope :with_provider, lambda { where("provider IS NOT NULL") }
+
   private
 
   def set_identifier
