@@ -13,7 +13,7 @@
       <%= f.label :password do %>
         Password
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em class="form-instruction">(<%= @minimum_password_length %> characters minimum)</em>
         <% end %>
       <% end %>
       <br />

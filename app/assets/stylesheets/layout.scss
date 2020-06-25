@@ -134,7 +134,8 @@ footer {
   }
 
   label {
-    width: 30%;
+    position: relative;
+    width: 25%;
     margin-right: 2%;
     padding-top: 14px;
   }
@@ -146,11 +147,20 @@ footer {
   }
 }
 
+.form-instruction {
+  display: block;
+  font-size: 14px;
+  position: absolute;
+  top: 36px;
+  left: 0;
+  color: $colour_black_lighter;
+}
+
 .form-indented,
 .actions {
   margin-top: $spacing;
   margin-bottom: $spacing;
-  margin-left: 32%;
+  margin-left: 27%;
 }
 
 .actions {
