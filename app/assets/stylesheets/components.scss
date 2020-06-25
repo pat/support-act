@@ -13,8 +13,10 @@
   border: none;
   border-radius: $border_radius;
   padding: ($spacing * 0.75) ($spacing * 1.5);
-  font-weight: bold;
+  font-weight: 500;
   text-decoration: none;
+  letter-spacing: 0.5px;
+  // text-transform: uppercase;
   height: auto;
 
   background: $colour_secondary;
