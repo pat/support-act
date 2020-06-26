@@ -165,8 +165,12 @@ footer {
     width: auto;
 
     @media screen and (min-width: 768px) {
-      width: 25%;
+      width: 35%;
       margin-right: 2%;
+    }
+
+    @media screen and (min-width: 1000px) {
+      width: 25%;
     }
 
     &:not(.small) {
@@ -186,6 +190,10 @@ footer {
     width: 100%;
 
     @media screen and (min-width: 768px) {
+      width: 50%;
+    }
+
+    @media screen and (min-width: 1000px) {
       width: 30%;
     }
   }
@@ -204,6 +212,10 @@ footer {
   margin-bottom: $spacing;
 
   @media screen and (min-width: 768px) {
+    margin-left: 37%;
+  }
+
+  @media screen and (min-width: 1000px) {
     margin-left: 27%;
   }
 }
