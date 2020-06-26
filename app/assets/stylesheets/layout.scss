@@ -14,6 +14,10 @@ body {
 #nav {
   @extend .small;
 
+  @media screen and (max-width: 767px) {
+    width: 100%;
+  }
+
   a {
     & + a {
       margin-left: $spacing;
@@ -83,11 +87,22 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media screen and (max-width: 767px) {
+      flex-shrink: 0;
+      flex-wrap: wrap;
+      text-align: center;
+    }
   }
 
   h1 {
     margin: 0;
     line-height: 1;
+
+    @media screen and (max-width: 767px) {
+      width: 100%;
+      margin-bottom: $spacing;
+    }
   }
 
   .title {
@@ -102,7 +117,8 @@ body {
     color: $colour_black_lighter;
   }
 
-  .nav {
+  p {
+    margin-bottom: 0 !important;
   }
 }
 
@@ -122,9 +138,13 @@ body {
 
 footer {
   font-size: $font_size_base * 0.9;
-  width: 50em;
+  width: 90%;
   margin: 6em auto 0 auto;
   padding-bottom: 2em;
+
+  @media screen and (min-width: 1000px) {
+    width: 50em;
+  }
 }
 
 // Forms
@@ -137,16 +157,37 @@ footer {
     margin-top: $spacing / 2;
   }
 
+  @media screen and (max-width: 767px) {
+    flex-wrap: wrap;
+  }
+
   label {
-    width: 25%;
-    margin-right: 2%;
-    // padding-top: 14px;
+    width: auto;
+
+    @media screen and (min-width: 768px) {
+      width: 25%;
+      margin-right: 2%;
+    }
+
+    &:not(.small) {
+      @media screen and (max-width: 767px) {
+        display: block;
+        width: 100%;
+      }
+    }
+    &.small {
+      padding-top: 7px;
+    }
   }
 
   input:not([type="checkbox"]),
   textarea,
   select {
-    width: 30%;
+    width: 100%;
+
+    @media screen and (min-width: 768px) {
+      width: 30%;
+    }
   }
 }
 
@@ -161,7 +202,10 @@ footer {
 .actions {
   margin-top: $spacing;
   margin-bottom: $spacing;
-  margin-left: 27%;
+
+  @media screen and (min-width: 768px) {
+    margin-left: 27%;
+  }
 }
 
 .actions {
@@ -205,6 +249,18 @@ input {
     &:first-of-type {
       font-size: $font_size_base * 2.1;
       padding-left: 0;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    p {
+      font-size: $font_size_base * 1.2;
+      padding-left: $spacing;
+
+      &:first-of-type {
+        font-size: $font_size_base * 1.6;
+        line-height: 1.4;
+      }
     }
   }
 }
