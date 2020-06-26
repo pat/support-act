@@ -57,22 +57,18 @@
     box-sizing: border-box;
     float: left;
     padding: {
-      right: $spacing;
+      right: $spacing * 2;
       bottom: $spacing / 2;
     }
 
-    &:nth-of-type(even) {
-      padding-left: $spacing;
-    }
-
-    &:nth-of-type(odd):not(:last-child) {
+    &:not(:last-child) {
       position: relative;
 
       &:after {
         content: "•";
         position: absolute;
         top: 0;
-        right: -2px;
+        right: 18px;
       }
     }
   }
