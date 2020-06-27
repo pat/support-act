@@ -61,3 +61,8 @@ Style/RedundantRegexpCharacterClass:
   Enabled: true
 Style/RedundantRegexpEscape:
   Enabled: true
+
+# 0.86
+
+Style/RedundantFetchBlock:
+  Enabled: true
