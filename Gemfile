@@ -15,7 +15,6 @@ gem "turbolinks", "~> 5"
 gem "webpacker", "~> 4.0"
 
 gem "bootsnap", ">= 1.4.2", :require => false
-gem "bugsnag"
 gem "decent_exposure"
 gem "devise"
 gem "lastfm"
@@ -27,6 +26,10 @@ gem "rspotify"
 gem "rubocop"
 gem "rubocop-performance"
 gem "rubocop-rails"
+
+group :production do
+  gem "bugsnag"
+end
 
 group :development, :test do
   gem "byebug", :platforms => %i[mri mingw x64_mingw]
