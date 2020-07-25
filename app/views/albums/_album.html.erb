@@ -1,15 +1,17 @@
-<div class="image">
-  <% if album.image %>
-    <%= image_tag album.image %>
-  <% end %>
+<div class="album-details">
+  <div class="image">
+    <% if album.image %>
+      <%= image_tag album.image %>
+    <% end %>
+  </div>
+
+  <div class="info">
+    <h3 class="album-name"><%= album.name %></h3>
+    <h4 class="album-artist"><%= album.artist.name %></h4>
+  </div>
 </div>
 
-<div class="info">
-  <p class="album-name"><%= album.name %></p>
-  <p class="album-artist"><%= album.artist.name %></p>
-
-  <p class="album-purchase">
-    <span class="button small tertiary unpurchase">Purchased</span>
-    <span class="button small purchase">Mark as Purchased</span>
-  </p>
+<div class="album-purchase">
+  <span class="button small tertiary unpurchase">Purchased <span class="checkmark">&check;</span></span>
+  <span class="button small purchase">Mark as Purchased</span>
 </div>

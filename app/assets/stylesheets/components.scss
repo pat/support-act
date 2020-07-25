@@ -10,7 +10,8 @@
   display: inline-block;
   -webkit-appearance: none;
   appearance: none;
-  border: none;
+  box-sizing: border-box;
+  border: 1px solid $colour_secondary;
   border-radius: $border_radius;
   padding: ($spacing * 0.75) ($spacing * 1.5);
   font-weight: 500;
@@ -28,10 +29,11 @@
 
   &.primary {
     background: $colour_primary;
+    border-color: $colour_primary;
   }
 
   &.tertiary {
-    border: 1px solid $colour_subtle;
+    border-color: $colour_subtle;
     background: transparent;
     color: $colour_text;
   }
@@ -44,6 +46,22 @@
     border: none;
     background: none;
     color: inherit;
+  }
+
+  &.purchase,
+  &.unpurchase {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-left: 0 !important;
+  }
+
+  &.unpurchase {
+    border-color: $colour_primary;
+
+    .checkmark {
+      color: $colour_primary;
+    }
   }
 }
 
@@ -93,34 +111,67 @@
 // Albums
 
 .albums {
-  max-width: 600px;
-  margin: 0 auto;
+  margin: {
+    top: 4em;
+    right: auto;
+    bottom: 0;
+    left: auto;
+  }
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 2em;
+  grid-row-gap: 4em;
+}
+
+.albums + h2 {
+  margin-top: 4em;
 }
 
 .album {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-between;
   text-decoration: none;
   color: $colour_black;
+  border: 1px solid $colour_light;
+  border-radius: 10px;
+  padding: 1em;
 
   .image {
-    width: 300px;
-    height: 300px;
-    max-width: 300px;
-    margin: 1em;
+    // width: 300px;
+    // height: 300px;
+    // max-width: 300px;
+    // margin: 1em;
+    width: 100%;
 
     img {
-      width: 300px;
+      // width: 300px;
+      width: 100%;
+      box-shadow: 0 0 5px 2px hsla(0, 1, 47, 0.1);
     }
+  }
+
+  &:nth-of-type(3n + 2) {
+    margin-top: -2em;
+    margin-bottom: 2em;
   }
 
   .album-name {
     font-weight: bold;
+    margin: {
+      top: 0.5em;
+      bottom: 0.25em;
+    }
+  }
+
+  .album-artist {
+    margin-bottom: 2em;
   }
 
   &.unpurchased .album-purchase {
     .purchase {
-      display: inline;
+      display: block;
     }
 
     .unpurchase {
@@ -134,7 +185,7 @@
     }
 
     .unpurchase {
-      display: inline;
+      display: block;
     }
   }
 }

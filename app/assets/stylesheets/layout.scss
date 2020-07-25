@@ -7,7 +7,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background-image: linear-gradient(180deg, #eefff0 0%, #ffffff 50%);
-  background-size: cover;
+  background-size: auto 100vh;
   background-repeat: no-repeat;
 }
 
@@ -137,14 +137,11 @@ body {
 }
 
 footer {
-  font-size: $font_size_base * 0.9;
-  width: 90%;
-  margin: 6em auto 0 auto;
+  font-size: $font_size_base * 0.8;
+  margin-top: 6em;
   padding-bottom: 2em;
-
-  @media screen and (min-width: 1000px) {
-    width: 50em;
-  }
+  padding-top: 2em;
+  background-color: #eeeeee;
 }
 
 // Forms
