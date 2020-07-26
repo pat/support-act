@@ -128,12 +128,15 @@ body {
 }
 
 .content {
-  width: 90%;
   margin: 0 auto;
   flex: 1;
 
   p {
     margin: 1.5em 0;
+  }
+
+  @media screen and (min-width: 0px) {
+    width: 90%;
   }
 
   @media screen and (min-width: 1000px) {
@@ -256,13 +259,18 @@ input {
   margin-bottom: $spacing * 2;
 
   p {
-    font-size: $font_size_base * 1.35;
     margin: 0.4em auto;
-    padding-left: $spacing * 2;
+  }
 
-    &:first-of-type {
-      font-size: $font_size_base * 2.1;
-      padding-left: 0;
+  @media screen and (min-width: 768px) {
+    p {
+      font-size: $font_size_base * 1.35;
+      padding-left: $spacing * 2;
+
+      &:first-of-type {
+        font-size: $font_size_base * 2.1;
+        padding-left: 0;
+      }
     }
   }
 
