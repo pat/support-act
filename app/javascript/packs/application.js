@@ -17,22 +17,14 @@ require("channels");
 
 window.setAsPurchased = function (id) {
   var album = document.getElementById(`album-${id}`);
-  var unpurchasedButton = album.getElementsByClassName("purchase")[0];
   album.classList.add("purchased");
   album.classList.remove("unpurchased");
-  unpurchasedButton.classList.remove("clicked");
-  void unpurchasedButton.offsetWidth;
-  unpurchasedButton.classList.add("clicked");
   album.setAttribute("data-method", "delete");
 };
 
 window.setAsUnpurchased = function (id) {
   var album = document.getElementById(`album-${id}`);
-  var purchasedButton = album.getElementsByClassName("unpurchase")[0];
   album.classList.remove("purchased");
   album.classList.add("unpurchased");
-  purchasedButton.classList.remove("clicked");
-  void purchasedButton.offsetWidth;
-  purchasedButton.classList.add("clicked");
   album.setAttribute("data-method", "post");
 };

@@ -61,14 +61,13 @@
 
   &.purchase,
   &.unpurchase {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     display: block;
     width: 100%;
     text-align: center;
     margin-left: 0 !important;
-
-    &.clicked {
-      animation: purchaseToggle 0s ease-in-out 1 forwards;
-    }
   }
 
   &.unpurchase {
@@ -89,24 +88,6 @@
       border: none;
       text-decoration: underline;
     }
-  }
-}
-
-@keyframes purchaseToggle {
-  0% {
-    opacity: 1;
-  }
-
-  98% {
-    opacity: 0;
-  }
-
-  99% {
-    display: none;
-  }
-
-  100% {
-    opacity: 1;
   }
 }
 
@@ -191,13 +172,19 @@
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 0 5px 2px hsla(0, 1, 47, 0.1);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 10px 2px hsla(0, 1, 47, 0.22);
+  }
 
   &-details {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    padding: {
+    margin: {
       right: 1em;
       bottom: 1em;
       left: 1em;
@@ -208,6 +195,7 @@
     width: 100%;
 
     img {
+      transition: all 0.33s ease-in-out;
       border-radius: 10px 10px 0 0;
       width: 100%;
     }
@@ -232,23 +220,34 @@
     margin-bottom: 2em;
   }
 
+  &-purchase {
+    margin-top: 2em;
+  }
+
   &.unpurchased .album-purchase {
     .purchase {
-      display: block;
+      animation: fadeIn 0.33s ease-in-out 1 forwards;
     }
 
     .unpurchase {
-      display: none;
+      animation: fadeOut 0.33s ease-in-out 1 forwards;
     }
   }
 
   &.purchased .album-purchase {
     .purchase {
-      display: none;
+      animation: fadeOut 0.33s ease-in-out 1 forwards;
     }
 
     .unpurchase {
-      display: block;
+      animation: fadeIn 0.33s ease-in-out 1 forwards;
+    }
+  }
+
+  &.purchased {
+    img {
+      filter: grayscale(100%);
+      opacity: 0.5;
     }
   }
 }
@@ -256,5 +255,25 @@
 .account {
   h2:not(:first-of-type) {
     margin-top: 2em;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }

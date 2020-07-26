@@ -23,6 +23,10 @@ body {
     & + a {
       margin-left: $spacing;
     }
+
+    &:hover {
+      color: darken($colour_link, 20%);
+    }
   }
 
   .button {

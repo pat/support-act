@@ -11,10 +11,6 @@ a {
   color: $colour_link;
   font-weight: 500;
   transition: color 0.3s ease-in-out;
-
-  &:hover {
-    color: darken($colour_link, 20%);
-  }
 }
 
 h1,
