@@ -54,6 +54,10 @@
     width: 100%;
     text-align: center;
     margin-left: 0 !important;
+
+    &.clicked {
+      animation: purchaseToggle 0s ease-in-out 1 forwards;
+    }
   }
 
   &.unpurchase {
@@ -62,6 +66,32 @@
     .checkmark {
       color: $colour_primary;
     }
+  }
+
+  &.collapse {
+    @media screen and (max-width: 499px) {
+      padding: 0;
+      border: none;
+      text-decoration: underline;
+    }
+  }
+}
+
+@keyframes purchaseToggle {
+  0% {
+    opacity: 1;
+  }
+
+  98% {
+    opacity: 0;
+  }
+
+  99% {
+    display: none;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 
@@ -119,9 +149,18 @@
   }
 
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   grid-column-gap: 2em;
-  grid-row-gap: 4em;
+  grid-row-gap: 2em;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 4em;
+  }
+
+  @media screen and (min-width: 960px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .albums + h2 {
@@ -153,8 +192,10 @@
   }
 
   &:nth-of-type(3n + 2) {
-    margin-top: -2em;
-    margin-bottom: 2em;
+    @media screen and (min-width: 960px) {
+      margin-top: -2em;
+      margin-bottom: 2em;
+    }
   }
 
   .album-name {
@@ -187,5 +228,11 @@
     .unpurchase {
       display: block;
     }
+  }
+}
+
+.account {
+  h2:not(:first-of-type) {
+    margin-top: 2em;
   }
 }

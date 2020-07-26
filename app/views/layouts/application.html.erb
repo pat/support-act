@@ -21,7 +21,7 @@
           <% if fan_signed_in? %>
             <%= link_to "Dashboard", my_dashboard_path %>
             <%= link_to "My Account", my_account_path %>
-            <%= link_to "Log out", destroy_fan_session_path, :method => :delete, class: 'button tertiary' %>
+            <%= link_to "Log out", destroy_fan_session_path, :method => :delete, class: 'button tertiary collapse' %>
           <% else %>
             <%= link_to "Log In", new_fan_session_path, :class => "button" %>
             <%= link_to "Sign Up", new_fan_registration_path, :class => "button primary" %>
