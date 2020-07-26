@@ -10,17 +10,21 @@
   display: inline-block;
   -webkit-appearance: none;
   appearance: none;
-  border: none;
+  box-sizing: border-box;
+  border: 1px solid $colour_secondary;
   border-radius: $border_radius;
   padding: ($spacing * 0.75) ($spacing * 1.5);
   font-weight: 500;
   text-decoration: none;
   letter-spacing: 0.5px;
-  // text-transform: uppercase;
   height: auto;
-
   background: $colour_secondary;
   color: white;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: darken($colour_secondary, 10%);
+  }
 
   & + & {
     margin-left: $spacing / 2;
@@ -28,12 +32,21 @@
 
   &.primary {
     background: $colour_primary;
+    border-color: $colour_primary;
+
+    &:hover {
+      background-color: darken($colour_primary, 10%);
+    }
   }
 
   &.tertiary {
-    border: 1px solid $colour_subtle;
+    border-color: $colour_subtle;
     background: transparent;
     color: $colour_text;
+
+    &:hover {
+      border-color: $colour_secondary;
+    }
   }
 
   &.small {
@@ -44,6 +57,37 @@
     border: none;
     background: none;
     color: inherit;
+  }
+
+  &.purchase,
+  &.unpurchase {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-left: 0 !important;
+  }
+
+  &.unpurchase {
+    border-color: $colour_primary;
+
+    .checkmark {
+      color: $colour_primary;
+    }
+
+    &:hover {
+      background-color: $colour_light_subtle;
+    }
+  }
+
+  &.collapse {
+    @media screen and (max-width: 499px) {
+      padding: 0;
+      border: none;
+      text-decoration: underline;
+    }
   }
 }
 
@@ -93,48 +137,146 @@
 // Albums
 
 .albums {
-  max-width: 600px;
-  margin: 0 auto;
+  margin: {
+    top: 4em;
+    right: auto;
+    bottom: 0;
+    left: auto;
+  }
+
+  display: grid;
+  grid-column-gap: 2em;
+
+  @media screen and (min-width: 0px) {
+    grid-template-columns: 1fr;
+    grid-row-gap: 2em;
+  }
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 4em;
+  }
+
+  @media screen and (min-width: 960px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.albums + h2 {
+  margin-top: 4em;
 }
 
 .album {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   text-decoration: none;
   color: $colour_black;
+  border: 1px solid $colour_light;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 5px 2px hsla(0, 1, 47, 0.1);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 0 10px 2px hsla(0, 1, 47, 0.22);
+  }
+
+  &-details {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin: {
+      right: 1em;
+      bottom: 1em;
+      left: 1em;
+    }
+  }
 
   .image {
-    width: 300px;
-    height: 300px;
-    max-width: 300px;
-    margin: 1em;
+    width: 100%;
 
     img {
-      width: 300px;
+      transition: all 0.33s ease-in-out;
+      border-radius: 10px 10px 0 0;
+      width: 100%;
+    }
+  }
+
+  &:nth-of-type(3n + 2) {
+    @media screen and (min-width: 960px) {
+      margin-top: -2em;
+      margin-bottom: 2em;
     }
   }
 
   .album-name {
     font-weight: bold;
+    margin: {
+      top: 0.5em;
+      bottom: 0.25em;
+    }
+  }
+
+  .album-artist {
+    margin-bottom: 2em;
+  }
+
+  &-purchase {
+    margin-top: 2em;
   }
 
   &.unpurchased .album-purchase {
     .purchase {
-      display: inline;
+      animation: fadeIn 0.33s ease-in-out 1 forwards;
     }
 
     .unpurchase {
-      display: none;
+      animation: fadeOut 0.33s ease-in-out 1 forwards;
     }
   }
 
   &.purchased .album-purchase {
     .purchase {
-      display: none;
+      animation: fadeOut 0.33s ease-in-out 1 forwards;
     }
 
     .unpurchase {
-      display: inline;
+      animation: fadeIn 0.33s ease-in-out 1 forwards;
     }
+  }
+
+  &.purchased {
+    img {
+      filter: grayscale(100%);
+      opacity: 0.5;
+    }
+  }
+}
+
+.account {
+  h2:not(:first-of-type) {
+    margin-top: 2em;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }

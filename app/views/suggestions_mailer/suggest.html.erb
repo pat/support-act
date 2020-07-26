@@ -1,19 +1,21 @@
-<p>Hi <%= @fan.provider_identity %>,</p>
+<div class="page-albums wrapper">
+  <p>Hi <%= @fan.provider_identity %>,</p>
 
-<p>This is your monthly email from <a href="https://supportact.app">Support Act</a>, which makes gentle suggestions of albums you've streamed that you may wish to purchase.</p>
+  <p>This is your monthly email from <a href="https://supportact.app">Support Act</a>, which makes gentle suggestions of albums you've streamed that you may wish to purchase.</p>
 
-<p>Here are albums you've recently had on high rotation that you haven't marked as purchased. If you do buy one to support the artist, mark it as purchased and we won't suggest it again ☺️.</p>
+  <p>Here are albums you've recently had on high rotation that you haven't marked as purchased. If you do buy one to support the artist, mark it as purchased and we won't suggest it again ☺️.</p>
 
-<div class="albums">
-  <% @albums.each do |album| %>
-    <%= link_to my_purchase_url(@fan.identifier, album.identifier), :rel => :nofollow, class: 'album unpurchased' do %>
-      <%= render :partial => "albums/album", :locals => {:album => album, :fan => @fan, :purchased => false} %>
+  <div class="albums">
+    <% @albums.each do |album| %>
+      <%= link_to my_purchase_url(@fan.identifier, album.identifier), :rel => :nofollow, class: 'album unpurchased' do %>
+        <%= render :partial => "albums/album", :locals => {:album => album, :fan => @fan, :purchased => false} %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+
+  <p>If you don't want to receive these emails, no worries at all - just <a href="https://supportact.app/my/account#remove">log in and delete your account</a>, you're welcome back at any point.</p>
+
+  <p>Take care,</p>
+
+  <p><a href="https://supportact.app">Support Act</a></p>
 </div>
-
-<p>If you don't want to receive these emails, no worries at all - just <a href="https://supportact.app/my/account#remove">log in and delete your account</a>, you're welcome back at any point.</p>
-
-<p>Take care,</p>
-
-<p><a href="https://supportact.app">Support Act</a></p>
