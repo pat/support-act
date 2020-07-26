@@ -17,11 +17,14 @@
   font-weight: 500;
   text-decoration: none;
   letter-spacing: 0.5px;
-  // text-transform: uppercase;
   height: auto;
-
   background: $colour_secondary;
   color: white;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: darken($colour_secondary, 10%);
+  }
 
   & + & {
     margin-left: $spacing / 2;
@@ -30,12 +33,20 @@
   &.primary {
     background: $colour_primary;
     border-color: $colour_primary;
+
+    &:hover {
+      background-color: darken($colour_primary, 10%);
+    }
   }
 
   &.tertiary {
     border-color: $colour_subtle;
     background: transparent;
     color: $colour_text;
+
+    &:hover {
+      border-color: $colour_secondary;
+    }
   }
 
   &.small {
@@ -65,6 +76,10 @@
 
     .checkmark {
       color: $colour_primary;
+    }
+
+    &:hover {
+      background-color: $colour_light_subtle;
     }
   }
 
@@ -170,24 +185,31 @@
 .album {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   text-decoration: none;
   color: $colour_black;
   border: 1px solid $colour_light;
+  background-color: #fff;
   border-radius: 10px;
-  padding: 1em;
+  box-shadow: 0 0 5px 2px hsla(0, 1, 47, 0.1);
+
+  &-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: {
+      right: 1em;
+      bottom: 1em;
+      left: 1em;
+    }
+  }
 
   .image {
-    // width: 300px;
-    // height: 300px;
-    // max-width: 300px;
-    // margin: 1em;
     width: 100%;
 
     img {
-      // width: 300px;
+      border-radius: 10px 10px 0 0;
       width: 100%;
-      box-shadow: 0 0 5px 2px hsla(0, 1, 47, 0.1);
     }
   }
 
