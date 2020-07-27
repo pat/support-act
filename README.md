@@ -23,7 +23,7 @@ You will need **Ruby 2.7.1**, **NodeJS v10+** (and Yarn), and **PostgreSQL v10+*
 ```
 gem install bundler
 bundle install
-./bin/rails db:create db:migrate
+./bin/bootstrap
 ```
 
 Create a `.env` file in the project directory, and populate it with something like the following:
