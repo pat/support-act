@@ -150,6 +150,18 @@ footer {
   padding-bottom: 2em;
   padding-top: 2em;
   background-color: #eeeeee;
+
+  p {
+    margin: 0.5em auto;
+
+    @media screen and (min-width: 0px) {
+      width: 90%;
+    }
+
+    @media screen and (min-width: 1000px) {
+      width: 62.5em;
+    }
+  }
 }
 
 // Forms
