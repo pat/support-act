@@ -52,7 +52,7 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and
   # use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
@@ -75,7 +75,10 @@ Rails.application.configure do
   config.action_mailer.postmark_settings = {
     :api_token => ENV["POSTMARK_API_TOKEN"]
   }
-  config.action_mailer.default_url_options = {:host => "supportact.app"}
+  config.action_mailer.default_url_options = {
+    :host     => "supportact.app",
+    :protocol => "protocol"
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to
