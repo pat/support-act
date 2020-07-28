@@ -1,5 +1,8 @@
 inherit_from:
   - https://gist.githubusercontent.com/pat/ba3b8ffb1901bfe5439b460943b6b019/raw/.rubocop.yml
+  - https://gist.githubusercontent.com/pat/ba3b8ffb1901bfe5439b460943b6b019/raw/new_defaults.yml
+  - https://gist.githubusercontent.com/pat/ba3b8ffb1901bfe5439b460943b6b019/raw/performance.yml
+  - https://gist.githubusercontent.com/pat/ba3b8ffb1901bfe5439b460943b6b019/raw/rails.yml
 
 require:
   - rubocop-performance
@@ -18,52 +21,3 @@ Metrics/BlockLength:
   Exclude:
     - 'config/environments/*'
     - 'spec/**/*_spec.rb'
-
-# 0.80
-
-Style/HashEachMethods:
-  Enabled: true
-Style/HashTransformKeys:
-  Enabled: true
-Style/HashTransformValues:
-  Enabled: true
-
-# 0.81
-
-Lint/RaiseException:
-  Enabled: true
-Lint/StructNewOverride:
-  Enabled: true
-
-# 0.82
-
-Layout/SpaceAroundMethodCallOperator:
-  Enabled: true
-Style/ExponentialNotation:
-  Enabled: true
-
-# 0.83
-
-Layout/EmptyLinesAroundAttributeAccessor:
-  Enabled: true
-Style/SlicingWithRange:
-  Enabled: true
-
-# 0.84
-
-Lint/DeprecatedOpenSSLConstant:
-  Enabled: true
-
-# 0.85
-
-Lint/MixedRegexpCaptureTypes:
-  Enabled: true
-Style/RedundantRegexpCharacterClass:
-  Enabled: true
-Style/RedundantRegexpEscape:
-  Enabled: true
-
-# 0.86
-
-Style/RedundantFetchBlock:
-  Enabled: true
