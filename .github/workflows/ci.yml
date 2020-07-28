@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - '*'
+  push:
+    branches:
+      - master
+      # TODO: remove
+      - ci
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:10
+        env:
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432/tcp
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
+      - name: Get Yarn cache directory path
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Setup cache key and directory for node_modules cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+          bundler-cache: true
+      - name: Test
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:password@127.0.0.1:${{ job.services.postgres.ports[5432] }}/support_act_test
+          # mirror .env
+          SENDER: supportact@test.local
+          LAST_FM_API_KEY: testing_key
+          LAST_FM_API_SECRET: testing_secret
+        run: |
+          echo $DATABASE_URL
+          ./bin/bootstrap
+          ./bin/rake
+          ./bin/bundle exec rubocop
