@@ -77,7 +77,7 @@ Rails.application.configure do
   }
   config.action_mailer.default_url_options = {
     :host     => "supportact.app",
-    :protocol => "protocol"
+    :protocol => "https"
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
