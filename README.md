@@ -18,7 +18,7 @@ Please note that this codebase very much started as a spike to see what was poss
 
 ## Development Environment
 
-You will need **Ruby 2.7.1**, **NodeJS v10+** (and Yarn), and **PostgreSQL v10+** installed already. From there, it should hopefully be a matter of running the following commands to get the app prepared locally:
+You will need **Ruby 2.7.1**, **NodeJS v12+** (and Yarn), and **PostgreSQL v10+** installed already. From there, it should hopefully be a matter of running the following commands to get the app prepared locally:
 
 ```
 gem install bundler
