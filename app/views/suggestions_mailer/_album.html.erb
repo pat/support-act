@@ -1,0 +1,17 @@
+<div class="image">
+  <% if album.image %>
+    <%= image_tag album.image %>
+  <% else %>
+    <div class="noimage">&nbsp;</div>
+  <% end %>
+</div>
+
+<div class="album-details">
+  <div class="info">
+    <h3 class="album-name"><%= album.name %></h3>
+    <h4 class="album-artist"><%= album.artist.name %></h4>
+  </div>
+  <div class="album-purchase">
+    <span class="button small purchase">Mark as Purchased</span>
+  </div>
+</div>

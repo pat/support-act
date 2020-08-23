@@ -11,6 +11,8 @@
  * It is generally better to create a new file per style scope.
  *
  *= require reset
- *= require_tree .
+ *= require components
+ *= require layout
+ *= require typography
  *= require_self
  */

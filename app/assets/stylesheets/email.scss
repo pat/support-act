@@ -1,0 +1,48 @@
+/*
+ *= require reset
+ *= require components
+ *= require layout
+ *= require typography
+ *= require_self
+ */
+
+.email {
+  .albums {
+    display: block;
+  }
+
+  .album {
+    position: static;
+    display: inline-block;
+    margin: 0.5em;
+    width: 260px;
+    vertical-align: top;
+
+    &-details {
+      display: block;
+      position: static;
+      height: 100%;
+      margin: {
+        right: 1em;
+        bottom: 1em;
+        left: 1em;
+      }
+    }
+
+    .noimage {
+      height: 260px;
+    }
+  }
+
+  .button {
+    &.purchase,
+    &.unpurchase {
+      position: static;
+      bottom: auto;
+      left: auto;
+      width: 100%;
+      text-align: center;
+      margin-left: 0 !important;
+    }
+  }
+}
