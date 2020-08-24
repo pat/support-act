@@ -7,8 +7,6 @@ on:
   push:
     branches:
       - master
-      # TODO: remove
-      - ci
 
 jobs:
   build:
