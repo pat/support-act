@@ -31,6 +31,7 @@ namespace :consolidate do
       spotify = Album.find_by(
         :name => name, :artist_id => id, :last_fm_url => nil
       )
+      next if last_fm.nil?
 
       last_fm.update!(
         :spotify_url => spotify.spotify_url,
