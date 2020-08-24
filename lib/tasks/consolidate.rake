@@ -39,6 +39,9 @@ namespace :consolidate do
       )
 
       Fan.find_each do |fan|
+        next if fan.provider_cache.nil?
+        next if fan.provider_cache["latest_album_ids"].nil?
+
         fan.provider_cache_will_change!
         fan.provider_cache["latest_album_ids"].collect! do |original_id|
           original_id == spotify.id ? last_fm.id : original_id
