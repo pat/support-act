@@ -59,7 +59,7 @@ RSpec.describe "Parsing Last.fm data" do
     Parse.call(fan)
 
     album = Album.find_by(
-      :url => "http://www.last.fm/music/Kishi+Bashi/String+Quartet+Live!"
+      :last_fm_url => "http://www.last.fm/music/Kishi+Bashi/String+Quartet+Live!"
     )
 
     expect(album).to be_present
@@ -69,13 +69,13 @@ RSpec.describe "Parsing Last.fm data" do
 
   it "updates known albums" do
     artist = Artist.create!(
-      :name => "Thelma Plum",
-      :url  => "http://www.last.fm/music/Thelma+Plum"
+      :name        => "Thelma Plum",
+      :last_fm_url => "http://www.last.fm/music/Thelma+Plum"
     )
     album = Album.create!(
-      :name   => "Better in Black",
-      :artist => artist,
-      :url    => "http://www.last.fm/music/Thelma+Plum/Better+in+Blak"
+      :name        => "Better in Black",
+      :artist      => artist,
+      :last_fm_url => "http://www.last.fm/music/Thelma+Plum/Better+in+Blak"
     )
 
     Parse.call(fan)
@@ -93,10 +93,10 @@ RSpec.describe "Parsing Last.fm data" do
     fan.reload
 
     thelma = Album.find_by(
-      :url => "http://www.last.fm/music/Thelma+Plum/Better+in+Blak"
+      :last_fm_url => "http://www.last.fm/music/Thelma+Plum/Better+in+Blak"
     )
     kishi = Album.find_by(
-      :url => "http://www.last.fm/music/Kishi+Bashi/String+Quartet+Live!"
+      :last_fm_url => "http://www.last.fm/music/Kishi+Bashi/String+Quartet+Live!"
     )
 
     expect(fan.provider_cache["latest_album_ids"]).to eq([thelma.id, kishi.id])
