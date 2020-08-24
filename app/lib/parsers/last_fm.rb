@@ -30,28 +30,35 @@ module Parsers
     attr_reader :fan
 
     def album_for(hash)
-      album = Album.find_or_initialize_by(:url => hash["url"])
+      album = find_or_initialize_by_url_or_name(Album, hash)
 
-      album.update!(
-        :name   => hash["name"],
-        :mbid   => mbid(nil, hash["mbid"]),
-        :image  => image(hash["image"]),
-        :images => images(hash["image"]),
-        :artist => artist_for(hash["artist"])
-      )
+      album.name          = hash["name"]
+      album.last_fm_url ||= hash["url"]
+      album.last_fm_raw   = hash
+      album.mbid          = mbid(nil, hash["mbid"])
+      album.image       ||= image(hash["image"])
+      album.artist        = artist_for(hash["artist"])
+      album.save
 
       album
     end
 
     def artist_for(hash)
-      artist = Artist.find_or_initialize_by(:url => hash["url"])
+      artist = find_or_initialize_by_url_or_name(Artist, hash)
 
-      artist.update!(
-        :name => hash["name"],
-        :mbid => mbid(artist, hash["mbid"])
-      )
+      artist.name          = hash["name"]
+      artist.last_fm_url ||= hash["url"]
+      artist.last_fm_raw   = hash
+      artist.mbid          = mbid(artist, hash["mbid"])
+      artist.save
 
       artist
+    end
+
+    def find_or_initialize_by_url_or_name(model, hash)
+      model.find_by(:last_fm_url => hash["url"]) ||
+        model.find_by(:name => hash["name"]) ||
+        model.new(:name => hash["name"], :last_fm_url => hash["url"])
     end
 
     def image(array)

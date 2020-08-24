@@ -64,7 +64,9 @@ RSpec.describe "Parsing Spotify data" do
   it "creates unknown albums" do
     Parse.call(fan)
 
-    album = Album.find_by(:url => "spotify:album:5TrSm6l3WqUZ8NBJUydlEm")
+    album = Album.find_by(
+      :spotify_url => "spotify:album:5TrSm6l3WqUZ8NBJUydlEm"
+    )
 
     expect(album).to be_present
     expect(album.artist.name).to eq("Laura Mvula")
@@ -75,13 +77,13 @@ RSpec.describe "Parsing Spotify data" do
 
   it "updates known albums" do
     artist = Artist.create!(
-      :name => "Laura Mvula",
-      :url  => "spotify:artist:0Dy94lW3txJhWQHqNXP1BT"
+      :name        => "Laura Mvula",
+      :spotify_url => "spotify:artist:0Dy94lW3txJhWQHqNXP1BT"
     )
     album = Album.create!(
-      :name   => "Metropole Orkest",
-      :artist => artist,
-      :url    => "spotify:album:5TrSm6l3WqUZ8NBJUydlEm"
+      :name        => "Metropole Orkest",
+      :artist      => artist,
+      :spotify_url => "spotify:album:5TrSm6l3WqUZ8NBJUydlEm"
     )
 
     Parse.call(fan)
@@ -89,7 +91,7 @@ RSpec.describe "Parsing Spotify data" do
     artist.reload
     album.reload
 
-    expect(artist.raw).to_not be_empty
+    expect(artist.spotify_raw).to_not be_empty
     expect(album.name).to eq(
       "Laura Mvula with Metropole Orkest"
     )
@@ -99,7 +101,9 @@ RSpec.describe "Parsing Spotify data" do
     Parse.call(fan)
 
     fan.reload
-    album = Album.find_by(:url => "spotify:album:5TrSm6l3WqUZ8NBJUydlEm")
+    album = Album.find_by(
+      :spotify_url => "spotify:album:5TrSm6l3WqUZ8NBJUydlEm"
+    )
 
     expect(fan.provider_cache["latest_album_ids"]).to eq([album.id])
   end

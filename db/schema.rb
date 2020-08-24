@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_16_123414) do
+ActiveRecord::Schema.define(version: 2020_08_24_122726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,29 +18,33 @@ ActiveRecord::Schema.define(version: 2020_06_16_123414) do
   create_table "albums", force: :cascade do |t|
     t.uuid "identifier", null: false
     t.string "name", null: false
-    t.string "url", null: false
+    t.string "last_fm_url"
     t.string "mbid"
     t.jsonb "images", default: {}, null: false
     t.bigint "artist_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.jsonb "raw", default: {}, null: false
+    t.jsonb "spotify_raw", default: {}, null: false
     t.string "image"
+    t.string "spotify_url"
+    t.jsonb "last_fm_raw", default: {}, null: false
     t.index ["artist_id"], name: "index_albums_on_artist_id"
     t.index ["identifier"], name: "index_albums_on_identifier", unique: true
-    t.index ["url"], name: "index_albums_on_url"
+    t.index ["last_fm_url"], name: "index_albums_on_last_fm_url"
   end
 
   create_table "artists", force: :cascade do |t|
     t.uuid "identifier", null: false
     t.string "name", null: false
-    t.string "url", null: false
+    t.string "last_fm_url"
     t.string "mbid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.jsonb "raw", default: {}, null: false
+    t.jsonb "spotify_raw", default: {}, null: false
+    t.string "spotify_url"
+    t.jsonb "last_fm_raw", default: {}, null: false
     t.index ["identifier"], name: "index_artists_on_identifier", unique: true
-    t.index ["url"], name: "index_artists_on_url"
+    t.index ["last_fm_url"], name: "index_artists_on_last_fm_url"
   end
 
   create_table "fans", force: :cascade do |t|

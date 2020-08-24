@@ -23,27 +23,33 @@ module Parsers
     attr_reader :fan
 
     def album_for(object)
-      album = Album.find_or_initialize_by(:url => object.uri)
+      album = find_or_initialize_by_url_or_name(Album, object)
 
-      album.update!(
-        :name   => object.name,
-        :image  => image(object.images),
-        :artist => artist_for(object.artists.first),
-        :raw    => object.as_json
-      )
+      album.name          = object.name
+      album.spotify_url ||= object.uri
+      album.spotify_raw   = object.as_json
+      album.image         = image(object.images)
+      album.artist        = artist_for(object.artists.first)
+      album.save
 
       album
     end
 
     def artist_for(object)
-      artist = Artist.find_or_initialize_by(:url => object.uri)
+      artist = find_or_initialize_by_url_or_name(Artist, object)
 
-      artist.update!(
-        :name => object.name,
-        :raw  => object.as_json
-      )
+      artist.name          = object.name
+      artist.spotify_url ||= object.uri
+      artist.spotify_raw   = object.as_json
+      artist.save
 
       artist
+    end
+
+    def find_or_initialize_by_url_or_name(model, object)
+      model.find_by(:spotify_url => object.uri) ||
+        model.find_by(:name => object.name) ||
+        model.new(:name => object.name, :spotify_url => object.uri)
     end
 
     def image(array)
