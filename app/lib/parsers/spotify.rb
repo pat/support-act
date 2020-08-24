@@ -23,7 +23,7 @@ module Parsers
     attr_reader :fan
 
     def album_for(object)
-      album = Album.find_or_initialize_by(:url => object.uri)
+      album = Album.find_or_initialize_by(:spotify_url => object.uri)
 
       album.update!(
         :name   => object.name,
@@ -36,7 +36,7 @@ module Parsers
     end
 
     def artist_for(object)
-      artist = Artist.find_or_initialize_by(:url => object.uri)
+      artist = Artist.find_or_initialize_by(:spotify_url => object.uri)
 
       artist.update!(
         :name => object.name,

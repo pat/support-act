@@ -30,7 +30,7 @@ module Parsers
     attr_reader :fan
 
     def album_for(hash)
-      album = Album.find_or_initialize_by(:url => hash["url"])
+      album = Album.find_or_initialize_by(:last_fm_url => hash["url"])
 
       album.update!(
         :name   => hash["name"],
@@ -44,7 +44,7 @@ module Parsers
     end
 
     def artist_for(hash)
-      artist = Artist.find_or_initialize_by(:url => hash["url"])
+      artist = Artist.find_or_initialize_by(:last_fm_url => hash["url"])
 
       artist.update!(
         :name => hash["name"],

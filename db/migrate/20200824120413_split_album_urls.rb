@@ -1,0 +1,31 @@
+# frozen_string_literal: true
+
+class SplitAlbumUrls < ActiveRecord::Migration[6.0]
+  def up
+    rename_column :albums, :url, :last_fm_url
+    change_column_null :albums, :last_fm_url, true
+    add_column :albums, :spotify_url, :string, :index => true
+
+    execute <<~SQL
+      UPDATE albums
+      SET spotify_url = last_fm_url
+      WHERE last_fm_url LIKE 'spotify:%'
+    SQL
+
+    execute <<~SQL
+      UPDATE albums SET last_fm_url = NULL WHERE spotify_url IS NOT NULL
+    SQL
+  end
+
+  def down
+    execute <<~SQL
+      UPDATE albums
+      SET last_fm_url = spotify_url
+      WHERE spotify_url IS NOT NULL
+    SQL
+
+    remove_column :albums, :spotify_url
+    change_column_null :albums, :last_fm_url, false
+    rename_column :albums, :last_fm_url, :url
+  end
+end
