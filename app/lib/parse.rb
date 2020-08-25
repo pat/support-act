@@ -4,9 +4,9 @@ class Parse
   def self.call(fan)
     case fan.provider
     when "last.fm"
-      Parsers::LastFm.call(fan)
+      Parsers::LastFm::UpdateFan.call(fan)
     when "spotify"
-      Parsers::Spotify.call(fan)
+      Parsers::Spotify::UpdateFan.call(fan)
     when NilClass
       # Do nothing
     else
