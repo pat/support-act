@@ -6,7 +6,7 @@ class Parse
     when "last.fm"
       Parsers::LastFm::UpdateFan.call(fan)
     when "spotify"
-      Parsers::Spotify.call(fan)
+      Parsers::Spotify::UpdateFan.call(fan)
     when NilClass
       # Do nothing
     else
