@@ -19,12 +19,10 @@ window.setAsPurchased = function (id) {
   var album = document.getElementById(`album-${id}`);
   album.classList.add("purchased");
   album.classList.remove("unpurchased");
-  album.setAttribute("data-method", "delete");
 };
 
 window.setAsUnpurchased = function (id) {
   var album = document.getElementById(`album-${id}`);
   album.classList.remove("purchased");
   album.classList.add("unpurchased");
-  album.setAttribute("data-method", "post");
 };

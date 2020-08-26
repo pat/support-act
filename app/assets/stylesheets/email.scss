@@ -18,6 +18,10 @@
     width: 260px;
     vertical-align: top;
 
+    &-links {
+      margin-bottom: -1em;
+    }
+
     &-details {
       display: block;
       position: static;
