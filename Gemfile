@@ -18,6 +18,7 @@ gem "bootsnap", ">= 1.4.2", :require => false
 gem "decent_exposure"
 gem "devise"
 gem "lastfm"
+gem "musicbrainz", :git => "https://github.com/inkstak/musicbrainz.git"
 gem "omniauth"
 gem "omniauth-rails_csrf_protection"
 gem "postmark-rails"
