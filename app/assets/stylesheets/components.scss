@@ -53,6 +53,10 @@
     padding: ($spacing * 0.4) ($spacing * 0.8);
   }
 
+  &.very-small {
+    padding: ($spacing * 0.3) ($spacing * 0.7);
+  }
+
   &.invisible {
     border: none;
     background: none;
@@ -68,6 +72,14 @@
     width: 100%;
     text-align: center;
     margin-left: 0 !important;
+  }
+
+  &.external {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-left: 0 !important;
+    margin-bottom: 0.5em;
   }
 
   &.unpurchase {
@@ -223,23 +235,36 @@
     margin-bottom: 2em;
   }
 
+  &-links {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+
   &-purchase {
     margin-top: 2em;
   }
 
   &.unpurchased .album-purchase {
-    .purchase {
+    .purchase,
+    .external {
       animation: fadeIn 0.33s ease-in-out 1 forwards;
     }
 
     .unpurchase {
       animation: fadeOut 0.33s ease-in-out 1 forwards;
+      display: none;
     }
   }
 
   &.purchased .album-purchase {
     .purchase {
       animation: fadeOut 0.33s ease-in-out 1 forwards;
+      display: none;
+    }
+
+    .external {
+      animation: fadeOut 0.33s ease-in-out 1 forwards;
+      display: none;
     }
 
     .unpurchase {

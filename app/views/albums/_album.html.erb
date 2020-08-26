@@ -1,7 +1,5 @@
 <div class="image">
-  <% if album.image %>
-    <%= image_tag album.image %>
-  <% end %>
+  <%= image_tag album.image if album.image %>
 </div>
 
 <div class="album-details">
@@ -9,8 +7,19 @@
     <h3 class="album-name"><%= album.name %></h3>
     <h4 class="album-artist"><%= album.artist.name %></h4>
   </div>
+  <div class="album-links">
+    <% purchaseable_links(album).each do |link| %>
+      <%= link_to link, :target => "_blank", :class => "button very-small primary external" do %>
+        <span><%= purchase_link_label(link) %></span>
+      <% end %>
+    <% end %>
+  </div>
   <div class="album-purchase">
-    <span class="button small tertiary unpurchase">Purchased <span class="checkmark">&check;</span></span>
-    <span class="button small purchase">Mark as Purchased</span>
+    <%= link_to my_album_purchases_path(album), method: :delete, remote: true, :class => "button small tertiary unpurchase" do %>
+      <span>Purchased <span class="checkmark">&#10004;</span></span>
+    <% end %>
+    <%= link_to my_album_purchases_path(album), method: :post, remote: true, :class => "button small purchase" do %>
+      <span>Mark as Purchased</span>
+    <% end %>
   </div>
 </div>

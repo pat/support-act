@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_122726) do
+ActiveRecord::Schema.define(version: 2020_08_26_115650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,9 +28,13 @@ ActiveRecord::Schema.define(version: 2020_08_24_122726) do
     t.string "image"
     t.string "spotify_url"
     t.jsonb "last_fm_raw", default: {}, null: false
+    t.datetime "links_checked_at"
+    t.json "links", default: {}, null: false
     t.index ["artist_id"], name: "index_albums_on_artist_id"
     t.index ["identifier"], name: "index_albums_on_identifier", unique: true
     t.index ["last_fm_url"], name: "index_albums_on_last_fm_url"
+    t.index ["mbid"], name: "index_albums_on_mbid"
+    t.index ["spotify_url"], name: "index_albums_on_spotify_url"
   end
 
   create_table "artists", force: :cascade do |t|
@@ -45,6 +49,8 @@ ActiveRecord::Schema.define(version: 2020_08_24_122726) do
     t.jsonb "last_fm_raw", default: {}, null: false
     t.index ["identifier"], name: "index_artists_on_identifier", unique: true
     t.index ["last_fm_url"], name: "index_artists_on_last_fm_url"
+    t.index ["mbid"], name: "index_artists_on_mbid"
+    t.index ["spotify_url"], name: "index_artists_on_spotify_url"
   end
 
   create_table "fans", force: :cascade do |t|

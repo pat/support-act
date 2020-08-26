@@ -11,7 +11,16 @@
     <h3 class="album-name"><%= album.name %></h3>
     <h4 class="album-artist"><%= album.artist.name %></h4>
   </div>
+  <div class="album-links">
+    <% purchaseable_links(album).each do |link| %>
+      <%= link_to link, :target => "_blank", :class => "button very-small primary external" do %>
+        <span><%= purchase_link_label(link) %></span>
+      <% end %>
+    <% end %>
+  </div>
   <div class="album-purchase">
-    <span class="button small purchase">Mark as Purchased</span>
+    <%= link_to my_purchase_url(@fan.identifier, album.identifier), :rel => :nofollow, class: "button small purchase" do %>
+      <span>Mark as Purchased</span>
+    <% end %>
   </div>
 </div>
