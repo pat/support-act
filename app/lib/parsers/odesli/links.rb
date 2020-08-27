@@ -43,9 +43,9 @@ module Parsers
       end
 
       def urls
-        @urls ||= json["linksByPlatform"].values.collect do |hash|
-          hash["url"]
-        end
+        return [] if json["linksByPlatform"].nil?
+
+        json["linksByPlatform"].values.collect { |hash| hash["url"] }
       end
     end
   end
