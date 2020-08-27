@@ -5,7 +5,9 @@ class Album < ApplicationRecord
 
   before_validation :set_identifier, :on => :create
 
-  scope :unlinked, lambda { where("links_checked_at IS NULL") }
+  scope :unlinked_by_musicbranz, lambda do
+    where("musicbrainz_checked_at IS NULL")
+  end
   scope :with_mbid, lambda { where("mbid IS NOT NULL") }
 
   def self.latest_for_fan(fan)
