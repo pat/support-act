@@ -17,6 +17,7 @@ gem "webpacker", "~> 5.1"
 gem "bootsnap", ">= 1.4.2", :require => false
 gem "decent_exposure"
 gem "devise"
+gem "faraday"
 gem "lastfm"
 gem "musicbrainz", :git => "https://github.com/inkstak/musicbrainz.git"
 gem "omniauth"

@@ -348,6 +348,7 @@ DEPENDENCIES
   decent_exposure
   devise
   dotenv-rails
+  faraday
   lastfm
   listen (~> 3.2)
   musicbrainz!

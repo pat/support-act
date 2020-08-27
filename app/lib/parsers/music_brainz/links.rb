@@ -12,7 +12,7 @@ module Parsers
       end
 
       def call
-        album.links_checked_at = Time.current
+        album.musicbrainz_checked_at = Time.current
 
         if urls.present?
           album.links_will_change!

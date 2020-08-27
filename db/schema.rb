@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_26_115650) do
+ActiveRecord::Schema.define(version: 2020_08_27_105639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(version: 2020_08_26_115650) do
     t.string "image"
     t.string "spotify_url"
     t.jsonb "last_fm_raw", default: {}, null: false
-    t.datetime "links_checked_at"
+    t.datetime "musicbrainz_checked_at"
     t.json "links", default: {}, null: false
+    t.datetime "odesli_checked_at"
     t.index ["artist_id"], name: "index_albums_on_artist_id"
     t.index ["identifier"], name: "index_albums_on_identifier", unique: true
     t.index ["last_fm_url"], name: "index_albums_on_last_fm_url"

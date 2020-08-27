@@ -5,8 +5,14 @@ class Album < ApplicationRecord
 
   before_validation :set_identifier, :on => :create
 
-  scope :unlinked, lambda { where("links_checked_at IS NULL") }
+  scope :unlinked_by_musicbranz, lambda {
+    where("musicbrainz_checked_at IS NULL")
+  }
+  scope :unlinked_by_odesli, lambda {
+    where("odesli_checked_at IS NULL")
+  }
   scope :with_mbid, lambda { where("mbid IS NOT NULL") }
+  scope :with_spotify_url, lambda { where("spotify_url IS NOT NULL") }
 
   def self.latest_for_fan(fan)
     ids = fan.provider_cache["latest_album_ids"][0..19]
