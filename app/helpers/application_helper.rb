@@ -3,8 +3,9 @@
 module ApplicationHelper
   NO_LINKS = [].freeze
   PURCHASE_PATTERNS = {
-    "Bandcamp" => "bandcamp.com",
-    "iTunes"   => "itunes.apple.com"
+    "Bandcamp"     => "bandcamp.com",
+    "iTunes"       => "app=itunes",
+    "Google Store" => "play.google.com/store"
   }.freeze
 
   def purchase_link_label(link)
@@ -18,7 +19,7 @@ module ApplicationHelper
   def purchaseable_links(album)
     return NO_LINKS if album.links["musicbrainz"].blank?
 
-    links = album.links["musicbrainz"].select do |link|
+    links = album.links.values.flatten.select do |link|
       PURCHASE_PATTERNS.values.any? { |pattern| link[pattern] }
     end
 
