@@ -4,7 +4,7 @@ module ApplicationHelper
   NO_LINKS = [].freeze
   PURCHASE_PATTERNS = {
     "Bandcamp"     => "bandcamp.com",
-    "iTunes"       => "app=itunes",
+    "iTunes"       => /itunes\.apple\.com|app=itunes/,
     "Google Store" => "play.google.com/store"
   }.freeze
 
@@ -23,8 +23,8 @@ module ApplicationHelper
       PURCHASE_PATTERNS.values.any? { |pattern| link[pattern] }
     end
 
-    links.
-      group_by { |link| URI(link).host }.
-      values.collect(&:first)
+    PURCHASE_PATTERNS.
+      collect { |_label, pattern| links.detect { |link| link[pattern] } }.
+      compact
   end
 end
