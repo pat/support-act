@@ -352,6 +352,7 @@ DEPENDENCIES
   lastfm
   listen (~> 3.2)
   musicbrainz!
+  nokogiri
   omniauth
   omniauth-rails_csrf_protection
   pg (~> 1.2)

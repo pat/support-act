@@ -9,5 +9,6 @@ namespace :albums do
   task :links => :environment do
     Parsers::MusicBrainz::Links.call
     Parsers::Odesli::Links.call
+    Parsers::Bandcamp::Links.call
   end
 end
