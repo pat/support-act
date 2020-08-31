@@ -2,17 +2,25 @@
 
 class Album < ApplicationRecord
   belongs_to :artist
+  has_many :album_service_checks, :dependent => :delete_all
 
   before_validation :set_identifier, :on => :create
 
-  scope :unlinked_by_musicbranz, lambda {
-    where("musicbrainz_checked_at IS NULL")
-  }
-  scope :unlinked_by_odesli, lambda {
-    where("odesli_checked_at IS NULL")
-  }
   scope :with_mbid, lambda { where("mbid IS NOT NULL") }
   scope :with_spotify_url, lambda { where("spotify_url IS NOT NULL") }
+  scope :without_recent_check, lambda { |service|
+    left_joins(:album_service_checks).merge(
+      AlbumServiceCheck.missing_or_old(service)
+    )
+  }
+
+  def self.each_unchecked(service)
+    without_recent_check(service).find_each do |album|
+      AlbumServiceCheck.check(album, "musicbrainz") do
+        yield album
+      end
+    end
+  end
 
   def self.latest_for_fan(fan)
     ids = fan.provider_cache["latest_album_ids"][0..19]
