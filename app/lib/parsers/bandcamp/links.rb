@@ -6,6 +6,8 @@ module Parsers
       def self.call
         Album.each_unchecked("bandcamp") do |album|
           new(album).call
+
+          sleep 1 # Don't hit Bandcamp's servers too hard.
         end
       end
 
