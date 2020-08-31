@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_27_105639) do
+ActiveRecord::Schema.define(version: 2020_08_31_103744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "album_service_checks", force: :cascade do |t|
+    t.bigint "album_id", null: false
+    t.string "service", null: false
+    t.datetime "last_checked_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["album_id"], name: "index_album_service_checks_on_album_id"
+  end
 
   create_table "albums", force: :cascade do |t|
     t.uuid "identifier", null: false
@@ -91,6 +100,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_105639) do
     t.index ["fan_id"], name: "index_purchases_on_fan_id"
   end
 
+  add_foreign_key "album_service_checks", "albums"
   add_foreign_key "albums", "artists"
   add_foreign_key "purchases", "albums"
   add_foreign_key "purchases", "fans"
