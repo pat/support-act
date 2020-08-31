@@ -17,9 +17,10 @@ module ApplicationHelper
   end
 
   def purchaseable_links(album)
-    return NO_LINKS if album.links["musicbrainz"].blank?
+    all_links = album.links.values.flatten
+    return NO_LINKS if all_links.blank?
 
-    links = album.links.values.flatten.select do |link|
+    links = all_links.select do |link|
       PURCHASE_PATTERNS.values.any? { |pattern| link[pattern] }
     end
 
