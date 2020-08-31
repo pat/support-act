@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Album < ApplicationRecord
+  JOIN_CLAUSE = "LEFT OUTER JOIN album_service_checks ON " \
+    "album_id = albums.id AND service = ?"
+
   belongs_to :artist
   has_many :album_service_checks, :dependent => :delete_all
 
@@ -9,9 +12,8 @@ class Album < ApplicationRecord
   scope :with_mbid, lambda { where("mbid IS NOT NULL") }
   scope :with_spotify_url, lambda { where("spotify_url IS NOT NULL") }
   scope :without_recent_check, lambda { |service|
-    left_joins(:album_service_checks).merge(
-      AlbumServiceCheck.missing_or_old(service)
-    )
+    join = sanitize_sql([JOIN_CLAUSE, service])
+    joins(join).merge(AlbumServiceCheck.missing_or_old)
   }
 
   def self.each_unchecked(service)

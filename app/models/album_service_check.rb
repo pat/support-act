@@ -6,9 +6,8 @@ class AlbumServiceCheck < ApplicationRecord
   validates :service,         :presence => true
   validates :last_checked_at, :presence => true
 
-  scope :missing_or_old, lambda { |service|
-    where("service IS NULL OR service = ?", service).
-      where("last_checked_at IS NULL or last_checked_at < ?", 3.months.ago)
+  scope :missing_or_old, lambda {
+    where("last_checked_at IS NULL or last_checked_at < ?", 3.months.ago)
   }
 
   def self.check(album, service)
