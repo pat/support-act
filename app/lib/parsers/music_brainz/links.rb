@@ -3,8 +3,11 @@
 module Parsers
   module MusicBrainz
     class Links
-      def self.call(album)
-        new(album).call
+      def self.call
+        Album.with_mbid.each_unchecked("musicbrainz") do |album|
+          new(album).call
+          sleep 1.1 # to avoid MusicBrainz rate-limits.
+        end
       end
 
       def initialize(album)
@@ -12,13 +15,10 @@ module Parsers
       end
 
       def call
-        album.musicbrainz_checked_at = Time.current
+        return if urls.blank?
 
-        if urls.present?
-          album.links_will_change!
-          album.links["musicbrainz"] = Array(urls)
-        end
-
+        album.links_will_change!
+        album.links["musicbrainz"] = Array(urls)
         album.save!
       end
 
