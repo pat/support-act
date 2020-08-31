@@ -18,7 +18,7 @@ class Album < ApplicationRecord
 
   def self.each_unchecked(service)
     without_recent_check(service).find_each do |album|
-      AlbumServiceCheck.check(album, "musicbrainz") do
+      AlbumServiceCheck.check(album, service) do
         yield album
       end
     end
