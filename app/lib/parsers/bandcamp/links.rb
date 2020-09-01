@@ -43,15 +43,17 @@ module Parsers
       end
 
       def get(url, query: nil)
-        response = Faraday.get(url) do |request|
+        parse Faraday.get(url) do |request|
           request.params["q"] = %("#{query}") if query
         end
+      end
 
+      def parse(response)
         case response.status
         when 200..299
           Nokogiri::HTML(response.body)
         when 300..399
-          get response.headers["Location"], query: query
+          get response.headers["Location"], :query => query
         else
           raise "Invalid response for #{url}: #{response.status} " \
             "(#{response.headers.inspect})"
