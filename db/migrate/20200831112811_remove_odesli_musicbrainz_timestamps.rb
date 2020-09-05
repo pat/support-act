@@ -3,7 +3,7 @@
 class RemoveOdesliMusicbrainzTimestamps < ActiveRecord::Migration[6.0]
   # rubocop:disable Metrics/MethodLength
   def up
-    execute <<~SQL
+    execute <<~SQL.squish
       INSERT INTO album_service_checks (
         album_id, service, last_checked_at, created_at, updated_at
       )
@@ -13,7 +13,7 @@ class RemoveOdesliMusicbrainzTimestamps < ActiveRecord::Migration[6.0]
       WHERE musicbrainz_checked_at IS NOT NULL
     SQL
 
-    execute <<~SQL
+    execute <<~SQL.squish
       INSERT INTO album_service_checks (
         album_id, service, last_checked_at, created_at, updated_at
       )
@@ -32,14 +32,14 @@ class RemoveOdesliMusicbrainzTimestamps < ActiveRecord::Migration[6.0]
     add_column :albums, :musicbrainz_checked_at, :datetime, :index => true
     add_column :albums, :odesli_checked_at, :datetime, :index => true
 
-    execute <<~SQL
+    execute <<~SQL.squish
       UPDATE albums
       SET musicbrainz_checked_at = album_service_checks.last_checked_at
       FROM album_service_checks
       WHERE album_service_checks.album_id = albums.id
     SQL
 
-    execute <<~SQL
+    execute <<~SQL.squish
       UPDATE albums
       SET odesli_checked_at = album_service_checks.last_checked_at
       FROM album_service_checks

@@ -9,8 +9,8 @@ class Album < ApplicationRecord
 
   before_validation :set_identifier, :on => :create
 
-  scope :with_mbid, lambda { where("mbid IS NOT NULL") }
-  scope :with_spotify_url, lambda { where("spotify_url IS NOT NULL") }
+  scope :with_mbid, lambda { where.not(:mbid => nil) }
+  scope :with_spotify_url, lambda { where.not(:spotify_url => nil) }
   scope :without_recent_check, lambda { |service|
     join = sanitize_sql([JOIN_CLAUSE, service])
     joins(join).merge(AlbumServiceCheck.missing_or_old)

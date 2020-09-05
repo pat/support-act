@@ -8,8 +8,8 @@ class Fan < ApplicationRecord
 
   before_validation :set_identifier, :on => :create
 
-  scope :confirmed, lambda { where("confirmed_at IS NOT NULL") }
-  scope :with_provider, lambda { where("provider IS NOT NULL") }
+  scope :confirmed, lambda { where.not(:confirmed_at => nil) }
+  scope :with_provider, lambda { where.not(:provider => nil) }
 
   private
 
