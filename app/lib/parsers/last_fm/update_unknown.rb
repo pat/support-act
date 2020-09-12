@@ -21,6 +21,8 @@ module Parsers
         )
 
         UpdateAlbum.call(hash, album, :ignore_artist => true)
+      rescue Lastfm::ApiError => error
+        raise error unless error.message == "Album not found"
       end
 
       private
