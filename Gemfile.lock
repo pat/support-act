@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/inkstak/musicbrainz.git
-  revision: 5c912d9e8a2370bd2a3879a971f8440060883fcb
+  revision: b9e71ecae20605c493295557cd79d4a6d25a3325
   specs:
     musicbrainz (1.1.0)
       activesupport
