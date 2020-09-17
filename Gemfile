@@ -7,7 +7,7 @@ ruby "2.7.1"
 gem "dotenv-rails", :groups => %i[ development test ]
 
 gem "pg", "~> 1.2"
-gem "puma", "~> 4.1"
+gem "puma", "~> 5.0"
 gem "rails", "~> 6.0.3"
 
 gem "sass-rails", ">= 6"
