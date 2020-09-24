@@ -7,6 +7,7 @@ module Parsers
         new.call(object, album)
       end
 
+      # rubocop:disable Metrics/AbcSize
       def call(object, album = nil)
         album ||= find_or_initialize_by_url_or_name(Album, object)
 
@@ -19,6 +20,7 @@ module Parsers
 
         album
       end
+      # rubocop:enable Metrics/AbcSize
 
       private
 
