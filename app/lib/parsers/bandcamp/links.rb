@@ -43,12 +43,14 @@ module Parsers
       end
 
       def get(url, query: nil)
-        parse Faraday.get(url) do |request|
+        response = Faraday.get(url) do |request|
           request.params["q"] = %("#{query}") if query
         end
+
+        parse response, url
       end
 
-      def parse(response)
+      def parse(response, url)
         case response.status
         when 200..299
           Nokogiri::HTML(response.body)
