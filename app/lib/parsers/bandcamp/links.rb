@@ -47,10 +47,10 @@ module Parsers
           request.params["q"] = %("#{query}") if query
         end
 
-        parse response, url
+        parse response, query, url
       end
 
-      def parse(response, url)
+      def parse(response, query, url)
         case response.status
         when 200..299
           Nokogiri::HTML(response.body)

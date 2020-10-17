@@ -35,6 +35,8 @@ module Parsers
       end
 
       def urls
+        return nil if release.nil?
+
         @urls ||= release.urls["purchase for download"]
       end
     end
