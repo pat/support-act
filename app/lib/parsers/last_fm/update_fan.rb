@@ -35,7 +35,7 @@ module Parsers
         @top_albums ||= last_fm.user.get_top_albums(
           :user   => fan.provider_identity,
           :period => "1month"
-        )
+        ) || []
       end
     end
   end
