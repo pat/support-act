@@ -255,7 +255,7 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.3)
-    rspotify (2.10.0)
+    rspotify (2.10.1)
       addressable (~> 2.5.2)
       omniauth-oauth2 (>= 1.6)
       rest-client (~> 2.0.2)
