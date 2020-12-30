@@ -8,6 +8,8 @@ namespace :fans do
       Bugsnag.notify(error) do |report|
         report.add_tab :fan_info, {:id => fan.id, :email => fan.email}
       end
+    rescue RestClient::ServiceUnavailable
+      # This happens occasionally. Continue on to the next fan.
     end
   end
 end
