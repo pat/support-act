@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby "2.7.2"
+ruby "3.0.0"
 
 gem "dotenv-rails", :groups => %i[ development test ]
 
@@ -15,7 +15,9 @@ gem "turbolinks", "~> 5"
 gem "webpacker", "~> 5.1"
 
 gem "bootsnap", ">= 1.4.2", :require => false
-gem "decent_exposure"
+gem "decent_exposure",
+  :git    => "https://github.com/pat/decent_exposure.git",
+  :branch => "ruby-3.0-support"
 gem "devise"
 gem "faraday"
 gem "lastfm"
