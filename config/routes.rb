@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :fans
+  devise_for :fans, :controllers => {:sessions => "sessions"}
 
   namespace :last_fm do
     resource :connection, :only => %i[ new show destroy ]
