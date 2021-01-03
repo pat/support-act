@@ -8,6 +8,14 @@ GIT
       faraday_middleware
       hashie (>= 3.2.0)
 
+GIT
+  remote: https://github.com/pat/decent_exposure.git
+  revision: b65784f72c99c14e60002813dc6875c5be6f752b
+  branch: ruby-3.0-support
+  specs:
+    decent_exposure (3.0.2)
+      activesupport (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -98,8 +106,6 @@ GEM
     crass (1.0.6)
     css_parser (1.7.1)
       addressable
-    decent_exposure (3.0.2)
-      activesupport (>= 4.0)
     devise (4.7.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -353,7 +359,7 @@ DEPENDENCIES
   byebug
   capybara
   capybara-email
-  decent_exposure
+  decent_exposure!
   devise
   dotenv-rails
   faraday
@@ -383,7 +389,7 @@ DEPENDENCIES
   webpacker (~> 5.1)
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 3.0.0p0
 
 BUNDLED WITH
-   2.1.4
+   2.2.3
