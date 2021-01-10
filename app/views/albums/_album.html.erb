@@ -5,7 +5,15 @@
 <div class="album-details">
   <div class="info">
     <h3 class="album-name"><%= album.name %></h3>
-    <h4 class="album-artist"><%= album.artist.name %></h4>
+    <h4 class="album-artist">
+      <% if artist_homepage(album.artist) %>
+        <%= link_to artist_homepage(album.artist), :target => "_blank" do %>
+          <%= album.artist.name %>
+        <% end %>
+      <% else %>
+        <%= album.artist.name %>
+      <% end %>
+    </h4>
   </div>
   <div class="album-links">
     <% purchaseable_links(album).each do |link| %>
@@ -13,11 +21,7 @@
         <span><%= purchase_link_label(link) %></span>
       <% end %>
     <% end %>
-    <% if artist_homepage(album.artist) %>
-      <%= link_to artist_homepage(album.artist), :target => "_blank", :class => "button very-small primary external" do %>
-        <span>Artist homepage</span>
-      <% end %>
-    <% end %>
+
   </div>
   <div class="album-purchase">
     <%= link_to my_album_purchases_path(album), method: :delete, remote: true, :class => "button small tertiary unpurchase" do %>

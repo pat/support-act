@@ -9,7 +9,15 @@
 <div class="album-details">
   <div class="info">
     <h3 class="album-name"><%= album.name %></h3>
-    <h4 class="album-artist"><%= album.artist.name %></h4>
+    <h4 class="album-artist">
+      <% if artist_homepage(album.artist) %>
+        <%= link_to artist_homepage(album.artist), :target => "_blank" do %>
+          <%= album.artist.name %>
+        <% end %>
+      <% else %>
+        <%= album.artist.name %>
+      <% end %>
+    </h4>
   </div>
   <div class="album-links">
     <% purchaseable_links(album).each do |link| %>
