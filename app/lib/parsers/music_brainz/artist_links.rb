@@ -4,7 +4,7 @@ module Parsers
   module MusicBrainz
     class ArtistLinks
       def self.call
-        Artist.with_mbid do |artist|
+        Artist.with_mbid.each do |artist|
           new(artist).call
           sleep 1.1 # to avoid MusicBrainz rate-limits.
         end
