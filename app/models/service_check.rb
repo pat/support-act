@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class AlbumServiceCheck < ApplicationRecord
-  belongs_to :album
+class ServiceCheck < ApplicationRecord
+  belongs_to :checkable, :polymorphic => true
 
   validates :service,         :presence => true
   validates :last_checked_at, :presence => true
@@ -10,10 +10,10 @@ class AlbumServiceCheck < ApplicationRecord
     where("last_checked_at IS NULL or last_checked_at < ?", 3.months.ago)
   }
 
-  def self.check(album, service)
+  def self.check(checkable, service)
     instance = find_or_initialize_by(
-      :album   => album,
-      :service => service
+      :checkable => checkable,
+      :service   => service
     )
 
     yield
