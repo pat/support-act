@@ -2,27 +2,18 @@
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
 #
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
 # be faster and is potentially less error prone than running all of your
 # migrations from scratch. Old migrations may fail to apply correctly if those
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_31_112811) do
+ActiveRecord::Schema.define(version: 2021_01_10_035819) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "album_service_checks", force: :cascade do |t|
-    t.bigint "album_id", null: false
-    t.string "service", null: false
-    t.datetime "last_checked_at", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["album_id"], name: "index_album_service_checks_on_album_id"
-  end
 
   create_table "albums", force: :cascade do |t|
     t.uuid "identifier", null: false
@@ -55,6 +46,7 @@ ActiveRecord::Schema.define(version: 2020_08_31_112811) do
     t.jsonb "spotify_raw", default: {}, null: false
     t.string "spotify_url"
     t.jsonb "last_fm_raw", default: {}, null: false
+    t.json "links", default: {}, null: false
     t.index ["identifier"], name: "index_artists_on_identifier", unique: true
     t.index ["last_fm_url"], name: "index_artists_on_last_fm_url"
     t.index ["mbid"], name: "index_artists_on_mbid"
@@ -98,8 +90,18 @@ ActiveRecord::Schema.define(version: 2020_08_31_112811) do
     t.index ["fan_id"], name: "index_purchases_on_fan_id"
   end
 
-  add_foreign_key "album_service_checks", "albums"
+  create_table "service_checks", force: :cascade do |t|
+    t.bigint "checkable_id", null: false
+    t.string "service", null: false
+    t.datetime "last_checked_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "checkable_type", default: "Album"
+    t.index ["checkable_id", "checkable_type"], name: "index_service_checks_on_checkable"
+  end
+
   add_foreign_key "albums", "artists"
   add_foreign_key "purchases", "albums"
   add_foreign_key "purchases", "fans"
+  add_foreign_key "service_checks", "albums", column: "checkable_id"
 end

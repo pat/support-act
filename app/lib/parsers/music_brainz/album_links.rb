@@ -2,7 +2,7 @@
 
 module Parsers
   module MusicBrainz
-    class Links
+    class AlbumLinks
       def self.call
         Album.with_mbid.each_unchecked("musicbrainz") do |album|
           new(album).call

@@ -233,6 +233,10 @@
 
   .album-artist {
     margin-bottom: 2em;
+
+    a {
+      color: inherit;
+    }
   }
 
   &-links {

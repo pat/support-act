@@ -28,4 +28,8 @@ module ApplicationHelper
       collect { |_label, pattern| links.detect { |link| link[pattern] } }.
       compact
   end
+
+  def artist_homepage(artist)
+    artist.links.dig("musicbrainz", "official homepage")
+  end
 end
