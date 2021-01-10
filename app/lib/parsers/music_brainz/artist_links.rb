@@ -4,7 +4,7 @@ module Parsers
   module MusicBrainz
     class ArtistLinks
       def self.call
-        Artist.with_mbid.each_unchecked("musicbrainz") do |artist|
+        Artist.with_mbid do |artist|
           new(artist).call
           sleep 1.1 # to avoid MusicBrainz rate-limits.
         end
@@ -30,14 +30,14 @@ module Parsers
         @client ||= ::MusicBrainz::Client.new
       end
 
-      def release
-        @release ||= client.artist artist.mbid, :includes => "url-rels"
+      def mb_artist
+        @mb_artist ||= client.artist artist.mbid, :includes => "url-rels"
       end
 
       def urls
-        return nil if release.nil?
+        return nil if mb_artist.nil?
 
-        @urls ||= release.urls
+        @urls ||= mb_artist.urls
       end
     end
   end
