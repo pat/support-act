@@ -30,6 +30,6 @@ module ApplicationHelper
   end
 
   def artist_homepage(artist)
-    artist.links.dig("musicbrainz", "official homepage")
+    Array(artist.links.dig("musicbrainz", "official homepage")).first
   end
 end
