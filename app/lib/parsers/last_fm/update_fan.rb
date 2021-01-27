@@ -32,10 +32,14 @@ module Parsers
       end
 
       def top_albums
-        @top_albums ||= last_fm.user.get_top_albums(
-          :user   => fan.provider_identity,
-          :period => "1month"
-        ) || []
+        @top_albums ||= begin
+          results = last_fm.user.get_top_albums(
+            :user   => fan.provider_identity,
+            :period => "1month"
+          ) || []
+
+          results.is_a?(Hash) ? [results] : results
+        end
       end
     end
   end
