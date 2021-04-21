@@ -14,7 +14,7 @@ class Album < ApplicationRecord
     ids = fan.provider_cache["latest_album_ids"][0..19]
     objects = yield(ids).includes(:artist).to_a
 
-    ids.collect { |id| objects.detect { |object| object.id == id } }.compact
+    ids.filter_map { |id| objects.detect { |object| object.id == id } }
   end
 
   def self.not_purchased_by(fan)
