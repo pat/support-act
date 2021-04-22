@@ -25,8 +25,7 @@ module ApplicationHelper
     end
 
     PURCHASE_PATTERNS.
-      collect { |_label, pattern| links.detect { |link| link[pattern] } }.
-      compact
+      filter_map { |_label, pattern| links.detect { |link| link[pattern] } }
   end
 
   def artist_homepage(artist)
