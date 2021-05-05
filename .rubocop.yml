@@ -22,3 +22,6 @@ Metrics/BlockLength:
   Exclude:
     - 'config/environments/*'
     - 'spec/**/*_spec.rb'
+
+Rails/EnvironmentVariableAccess:
+  AllowReads: true
