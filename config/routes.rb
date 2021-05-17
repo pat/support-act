@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
 
     get "/purchases/:fan_uuid/:album_uuid" => "purchases#new",
-      :as => :purchase # rubocop:disable Layout/HashAlignment
+      :as => :purchase
   end
 
   root :to => "home#index"
