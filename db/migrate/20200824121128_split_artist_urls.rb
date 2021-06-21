@@ -4,7 +4,7 @@ class SplitArtistUrls < ActiveRecord::Migration[6.0]
   def up
     rename_column :artists, :url, :last_fm_url
     change_column_null :artists, :last_fm_url, true
-    add_column :artists, :spotify_url, :string, :index => true
+    add_column :artists, :spotify_url, :string
 
     execute <<~SQL.squish
       UPDATE artists
