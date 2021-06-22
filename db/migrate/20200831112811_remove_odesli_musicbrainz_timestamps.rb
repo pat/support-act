@@ -26,11 +26,12 @@ class RemoveOdesliMusicbrainzTimestamps < ActiveRecord::Migration[6.0]
     remove_column :albums, :musicbrainz_checked_at
     remove_column :albums, :odesli_checked_at
   end
-  # rubocop:enable Metrics/MethodLength
 
   def down
-    add_column :albums, :musicbrainz_checked_at, :datetime, :index => true
-    add_column :albums, :odesli_checked_at, :datetime, :index => true
+    add_column :albums, :musicbrainz_checked_at, :datetime
+    add_index :albums, :musicbrainz_checked_at
+    add_column :albums, :odesli_checked_at, :datetime
+    add_index :albums, :odesli_checked_at
 
     execute <<~SQL.squish
       UPDATE albums
@@ -46,4 +47,5 @@ class RemoveOdesliMusicbrainzTimestamps < ActiveRecord::Migration[6.0]
       WHERE album_service_checks.album_id = albums.id
     SQL
   end
+  # rubocop:enable Metrics/MethodLength
 end
