@@ -58,7 +58,7 @@ module Parsers
           get response.headers["Location"], :query => query
         else
           raise "Invalid response for #{url}: #{response.status} " \
-            "(#{response.headers.inspect})"
+                "(#{response.headers.inspect})"
         end
       end
 
