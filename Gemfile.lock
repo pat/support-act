@@ -149,7 +149,7 @@ GEM
     faraday-patron (1.0.0)
     faraday_middleware (1.0.0)
       faraday (~> 1.0)
-    ffi (1.15.0)
+    ffi (1.15.3)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     hashdiff (1.0.1)
@@ -167,7 +167,7 @@ GEM
     lastfm (1.27.4)
       httparty
       xml-simple
-    listen (3.5.1)
+    listen (3.6.0)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     loofah (2.10.0)
@@ -264,7 +264,7 @@ GEM
       thor (~> 1.0)
     rainbow (3.0.0)
     rake (13.0.3)
-    rb-fsevent (0.10.4)
+    rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     regexp_parser (2.1.1)
