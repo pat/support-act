@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/inkstak/musicbrainz.git
-  revision: b9e71ecae20605c493295557cd79d4a6d25a3325
+  revision: 6ad3cb14760aff5f8731c0c9be940bdd7baab3f0
   specs:
     musicbrainz (1.1.0)
       activesupport
@@ -149,7 +149,7 @@ GEM
     faraday-net_http_persistent (1.2.0)
     faraday-patron (1.0.0)
     faraday-rack (1.0.0)
-    faraday_middleware (1.0.0)
+    faraday_middleware (1.1.0)
       faraday (~> 1.0)
     ffi (1.15.3)
     globalid (0.4.2)
