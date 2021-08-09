@@ -996,17 +996,10 @@
     "@babel/types" "^7.4.4"
     esutils "^2.0.2"
 
-"@babel/runtime@^7.12.5":
+"@babel/runtime@^7.12.5", "@babel/runtime@^7.8.4":
   version "7.14.8"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.8.tgz#7119a56f421018852694290b9f9148097391b446"
   integrity sha512-twj3L8Og5SaCRCErB4x4ajbvBIVV77CGeFglHpeg5WC5FF8TZzBWXtTJ4MqaD9QszLYTtr+IsaAL2rEUevb+eg==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.8.4":
-  version "7.14.0"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.14.0.tgz#46794bc20b612c5f75e62dd071e24dfd95f1cbe6"
-  integrity sha512-JELkvo/DlpNdJ7dlyw/eY7E0suy5i5GQH+Vlxaq1nsNJ+H7f4Vtv3jMeCEgRhZZQFXTjldYfQgv2qmM6M1v5wA==
   dependencies:
     regenerator-runtime "^0.13.4"
 
@@ -1104,10 +1097,10 @@
   resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.1.4.tgz#093d5341595a02089ed309dec40f3c37da7b1b10"
   integrity sha512-O3lEzL5DYbxppMdsFSw36e4BHIlfz/xusynwXGv3l2lhSlvah41qviRpsoAlKXxl37nZAqK+UUF5cnGGK45Mfw==
 
-"@rails/webpacker@^6.0.0-beta.7":
-  version "6.0.0-beta.7"
-  resolved "https://registry.yarnpkg.com/@rails/webpacker/-/webpacker-6.0.0-beta.7.tgz#5deaadc5bf962c5e031e6d038bbb5d4a591c07a6"
-  integrity sha512-ZnKSixM+XKKTjRBL5mR5b2ZZVtqYGdPP5MAn4d8aehTApu51w8DIFV+9dC4WI59mIjAOsc2411rNvkX/eLX5XQ==
+"@rails/webpacker@^6.0.0-pre.2":
+  version "6.0.0-pre.2"
+  resolved "https://registry.yarnpkg.com/@rails/webpacker/-/webpacker-6.0.0-pre.2.tgz#84fa0ac06b5c15b0811830bdd801176bf8ef3330"
+  integrity sha512-VxUaYiNOKAdBZ2TJF5VdQZ/iPZcfR2/Zh9eTg40rLc6XRwAo4P4RyxE59a0TnGxgxYG5Tl3kGahAPCIgikvj0w==
   dependencies:
     "@babel/core" "^7.12.9"
     "@babel/plugin-proposal-class-properties" "^7.12.1"
