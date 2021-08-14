@@ -12,7 +12,7 @@ gem "rails", "~> 6.1.0"
 
 gem "sass-rails", ">= 6"
 gem "turbolinks", "~> 5"
-gem "webpacker", "6.0.0.pre.2"
+gem "webpacker", "6.0.0.beta.7"
 
 gem "bootsnap", ">= 1.4.2", :require => false
 gem "decent_exposure",
