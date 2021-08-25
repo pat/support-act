@@ -256,7 +256,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.1)
+    rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
     railties (6.1.4.1)
       actionpack (= 6.1.4.1)
@@ -360,7 +360,7 @@ GEM
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
-    webpacker (6.0.0.rc.1)
+    webpacker (6.0.0.rc.5)
       activesupport (>= 5.2)
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
@@ -409,7 +409,7 @@ DEPENDENCIES
   turbolinks (~> 5)
   web-console (>= 3.3.0)
   webmock
-  webpacker (= 6.0.0.rc.1)
+  webpacker (= 6.0.0.rc.5)
 
 RUBY VERSION
    ruby 3.0.1p64
