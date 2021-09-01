@@ -10,6 +10,10 @@ namespace :suggestions do
       if Album.not_purchased_by(fan).any?
         SuggestionsMailer.suggest(fan).deliver_now
       end
+    rescue StandardError => error
+      Bugsnag.notify(error) do |report|
+        report.add_tab :fan_info, {:id => fan.id, :email => fan.email}
+      end
     end
   end
 end
