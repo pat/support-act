@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby "~> 3.0.2"
+ruby "~> 3.0.3"
 
 gem "dotenv-rails", :groups => %i[ development test ]
 
@@ -20,6 +20,7 @@ gem "decent_exposure",
   :branch => "ruby-3.0-support"
 gem "devise"
 gem "faraday"
+gem "invisible_captcha"
 gem "lastfm"
 gem "musicbrainz", :git => "https://github.com/inkstak/musicbrainz.git"
 gem "nokogiri"

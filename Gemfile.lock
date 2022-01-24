@@ -176,6 +176,8 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
+    invisible_captcha (2.0.0)
+      rails (>= 5.0)
     io-wait (0.2.1)
     json (2.5.1)
     jwt (2.2.3)
@@ -407,6 +409,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   faraday
+  invisible_captcha
   lastfm
   musicbrainz!
   nokogiri
@@ -430,7 +433,7 @@ DEPENDENCIES
   webpacker (= 6.0.0.rc.6)
 
 RUBY VERSION
-   ruby 3.0.2p107
+   ruby 3.0.3p157
 
 BUNDLED WITH
-   2.2.22
+   2.2.33
