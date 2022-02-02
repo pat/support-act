@@ -12,7 +12,7 @@ module LastFm
           URL_PATTERN,
           :api_key => ENV["LAST_FM_API_KEY"],
           :url     => last_fm_connection_url
-        ), allow_other_host: true
+        ), :allow_other_host => true
       )
     end
 
