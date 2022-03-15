@@ -35,7 +35,7 @@ module LastFm
         :provider_cache    => {}
       )
 
-      redirect_to my_dashboard_path, :notice => "Last.fm has been disconnected"
+      redirect_to my_dashboard_path, :notice => t(".success")
     end
 
     private

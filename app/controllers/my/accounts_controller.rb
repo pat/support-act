@@ -6,9 +6,9 @@ module My
 
     def update
       if fan.update fan_params
-        redirect_to my_account_path, :notice => "New details have been saved."
+        redirect_to my_account_path, :notice => t(".success")
       else
-        flash[:alert] = "Supplied details are not valid."
+        flash[:alert] = t(".failure")
         render :show
       end
     end
@@ -17,7 +17,7 @@ module My
       Purchase.where(:fan => current_fan).delete_all
       current_fan.destroy
 
-      redirect_to "/", :notice => "Your account has been deleted."
+      redirect_to "/", :notice => t(".success")
     end
 
     private
