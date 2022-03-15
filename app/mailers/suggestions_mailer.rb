@@ -7,6 +7,6 @@ class SuggestionsMailer < ApplicationMailer
     @fan = fan
     @albums = Album.not_purchased_by(fan)
 
-    mail :to => fan.email, :subject => "Monthly Suggestions"
+    mail :to => fan.email
   end
 end

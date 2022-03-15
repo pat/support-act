@@ -10,3 +10,28 @@ en:
     attributes:
       fan:
         password_confirmation: "Confirm Password"
+
+  last_fm:
+    connections:
+      destroy:
+        success: "Last.fm has been disconnected"
+
+  my:
+    accounts:
+      update:
+        failure: "Supplied details are not valid."
+        success: "New details have been saved."
+      destroy:
+        success: "Your account has been deleted."
+
+  sessions:
+    invalid_token: "Your session timed out, please try again."
+
+  spotify:
+    connections:
+      destroy:
+        success: "Spotify has been disconnected"
+
+  suggestions_mailer:
+    suggest:
+      subject: "Monthly Suggestions"

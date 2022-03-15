@@ -26,7 +26,7 @@ module Spotify
         :provider_cache    => {}
       )
 
-      redirect_to my_dashboard_path, :notice => "Spotify has been disconnected"
+      redirect_to my_dashboard_path, :notice => t(".success")
     end
 
     private

@@ -2,7 +2,7 @@
 
 class SessionsController < Devise::SessionsController
   rescue_from ActionController::InvalidAuthenticityToken do
-    flash[:alert] = "Your session timed out, please try again."
+    flash[:alert] = t("sessions.invalid_token")
 
     redirect_to new_fan_session_path
   end
