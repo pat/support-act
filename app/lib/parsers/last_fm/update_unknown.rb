@@ -31,7 +31,7 @@ module Parsers
 
       def last_fm
         @last_fm ||= Lastfm.new(
-          ENV["LAST_FM_API_KEY"], ENV["LAST_FM_API_SECRET"]
+          ENV.fetch("LAST_FM_API_KEY"), ENV.fetch("LAST_FM_API_SECRET")
         )
       end
     end

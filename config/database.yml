@@ -4,6 +4,9 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  <% unless ENV.key?('DATABASE_URL') %>
+  port: <%= ENV.fetch("POSTGRES_PORT", 5432) %>
+  <% end %>
 
 development:
   <<: *default
@@ -11,11 +14,11 @@ development:
 
 test:
   <<: *default
-  <% if ENV['DATABASE_URL'] %>
-  url: <%= ENV['DATABASE_URL'] %>
+  <% if ENV.key?('DATABASE_URL') %>
+  url: <%= ENV.fetch('DATABASE_URL') %>
   <% else %>
   database: support_act_test
   <% end %>
 
 production:
-  url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV.fetch('DATABASE_URL') %>

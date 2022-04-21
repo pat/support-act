@@ -38,7 +38,7 @@ module Parsers
 
           request.params["url"] = album.spotify_url
           request.params["userCountry"] = "AU"
-          request.params["key"] = ENV["ODESLI_API_KEY"]
+          request.params["key"] = ENV.fetch("ODESLI_API_KEY")
         end
       end
 

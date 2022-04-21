@@ -25,7 +25,9 @@ module Parsers
 
       def last_fm
         @last_fm ||= begin
-          api = Lastfm.new(ENV["LAST_FM_API_KEY"], ENV["LAST_FM_API_SECRET"])
+          api = Lastfm.new(
+            ENV.fetch("LAST_FM_API_KEY"), ENV.fetch("LAST_FM_API_SECRET")
+          )
           api.session = fan.provider_cache["token"]
           api
         end
