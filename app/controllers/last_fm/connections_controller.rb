@@ -10,7 +10,7 @@ module LastFm
       redirect_to(
         format(
           URL_PATTERN,
-          :api_key => ENV["LAST_FM_API_KEY"],
+          :api_key => ENV.fetch("LAST_FM_API_KEY"),
           :url     => last_fm_connection_url
         ), :allow_other_host => true
       )
@@ -42,7 +42,7 @@ module LastFm
 
     def last_fm
       @last_fm ||= Lastfm.new(
-        ENV["LAST_FM_API_KEY"], ENV["LAST_FM_API_SECRET"]
+        ENV.fetch("LAST_FM_API_KEY"), ENV.fetch("LAST_FM_API_SECRET")
       ).tap do |lfm|
         lfm.session = lfm.auth.get_session(:token => params[:token])["key"]
       end
