@@ -12,7 +12,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "@webpack-cli/serve": "^1.6.1"
+    "@webpack-cli/serve": "^1.7.0"
   },
   "babel": {
     "presets": ["./node_modules/@rails/webpacker/package/babel/preset.js"]
