@@ -19,6 +19,7 @@ module Parsers
         ).first
 
         UpdateAlbum.call(object, album) unless object.nil?
+      rescue RestClient::NotFound # rubocop:disable Lint/SuppressedException
       end
 
       private
