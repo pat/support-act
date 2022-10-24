@@ -45,7 +45,7 @@ module Parsers
       def urls
         return [] if json["linksByPlatform"].nil?
 
-        json["linksByPlatform"].values.collect { |hash| hash["url"] }
+        json["linksByPlatform"].values.pluck("url")
       end
     end
   end
