@@ -6,16 +6,6 @@ module LastFm
 
     before_action :authenticate_fan!
 
-    def new
-      redirect_to(
-        format(
-          URL_PATTERN,
-          :api_key => ENV.fetch("LAST_FM_API_KEY"),
-          :url     => last_fm_connection_url
-        ), :allow_other_host => true
-      )
-    end
-
     def show
       current_fan.update!(
         :provider          => "last.fm",
@@ -26,6 +16,16 @@ module LastFm
       Parse.call(current_fan)
 
       redirect_to my_dashboard_path
+    end
+
+    def new
+      redirect_to(
+        format(
+          URL_PATTERN,
+          :api_key => ENV.fetch("LAST_FM_API_KEY"),
+          :url     => last_fm_connection_url
+        ), :allow_other_host => true
+      )
     end
 
     def destroy
