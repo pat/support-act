@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_10_124243) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_10_30_050727) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,8 +21,8 @@ ActiveRecord::Schema.define(version: 2021_01_10_124243) do
     t.string "mbid"
     t.jsonb "images", default: {}, null: false
     t.bigint "artist_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.jsonb "spotify_raw", default: {}, null: false
     t.string "image"
     t.string "spotify_url"
@@ -41,8 +40,8 @@ ActiveRecord::Schema.define(version: 2021_01_10_124243) do
     t.string "name", null: false
     t.string "last_fm_url"
     t.string "mbid"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.jsonb "spotify_raw", default: {}, null: false
     t.string "spotify_url"
     t.jsonb "last_fm_raw", default: {}, null: false
@@ -59,8 +58,8 @@ ActiveRecord::Schema.define(version: 2021_01_10_124243) do
     t.string "provider_identity"
     t.jsonb "provider_cache", default: {}, null: false
     t.string "email", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -74,17 +73,19 @@ ActiveRecord::Schema.define(version: 2021_01_10_124243) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.boolean "subscribed", default: true, null: false
     t.index ["confirmation_token"], name: "index_fans_on_confirmation_token", unique: true
     t.index ["email"], name: "index_fans_on_email", unique: true
     t.index ["identifier"], name: "index_fans_on_identifier", unique: true
     t.index ["reset_password_token"], name: "index_fans_on_reset_password_token", unique: true
+    t.index ["subscribed"], name: "index_fans_on_subscribed"
   end
 
   create_table "purchases", force: :cascade do |t|
     t.bigint "album_id", null: false
     t.bigint "fan_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_purchases_on_album_id"
     t.index ["fan_id", "album_id"], name: "index_purchases_on_fan_id_and_album_id", unique: true
     t.index ["fan_id"], name: "index_purchases_on_fan_id"
@@ -94,8 +95,8 @@ ActiveRecord::Schema.define(version: 2021_01_10_124243) do
     t.bigint "checkable_id", null: false
     t.string "service", null: false
     t.datetime "last_checked_at", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "checkable_type", default: "Album"
     t.index ["checkable_id", "checkable_type"], name: "index_service_checks_on_checkable"
   end

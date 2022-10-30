@@ -7,6 +7,11 @@
       <%= f.email_field :email, autocomplete: "email" %>
     </div>
 
+    <div class="field">
+      <%= f.label :subscribed %><br />
+      <%= f.check_box :subscribed %>
+    </div>
+
     <div class="actions">
       <%= f.submit "Save", class: 'primary' %>
     </div>

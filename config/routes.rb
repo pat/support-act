@@ -27,5 +27,9 @@ Rails.application.routes.draw do
       :as => :purchase
   end
 
+  get "/unsubscribe/:fan_uuid",
+    :to => "unsubscriptions#create",
+    :as => :unsubscribe
+
   root :to => "home#index"
 end

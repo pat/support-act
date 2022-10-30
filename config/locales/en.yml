@@ -35,3 +35,7 @@ en:
   suggestions_mailer:
     suggest:
       subject: "Monthly Suggestions"
+
+  unsubscriptions:
+    create:
+      success: "You have been unsubscribed."

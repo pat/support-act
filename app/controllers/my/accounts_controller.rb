@@ -23,7 +23,9 @@ module My
     private
 
     def fan_params
-      params.fetch(:fan).permit(:email, :password, :password_confirmation)
+      params.
+        fetch(:fan).
+        permit(:email, :subscribed, :password, :password_confirmation)
     end
   end
 end
