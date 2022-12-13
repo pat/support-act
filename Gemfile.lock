@@ -182,7 +182,7 @@ GEM
     lastfm (1.27.4)
       httparty
       xml-simple
-    loofah (2.19.0)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
