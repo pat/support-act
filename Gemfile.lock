@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/inkstak/musicbrainz.git
-  revision: 671c557f43db03ae9ba266d77cd89b43e7f488d8
+  revision: 87f963ebeff89003bd202b5708fa44c445a28980
   specs:
     musicbrainz (1.2.0)
       activesupport
@@ -202,7 +202,7 @@ GEM
     minitest (5.17.0)
     msgpack (1.6.0)
     multi_xml (0.6.0)
-    multipart-post (2.2.3)
+    multipart-post (2.3.0)
     net-imap (0.3.4)
       date
       net-protocol
@@ -366,7 +366,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (2.0.5)
+    tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
       unf_ext
