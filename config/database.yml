@@ -21,4 +21,4 @@ test:
   <% end %>
 
 production:
-  url: <%= ENV.fetch('DATABASE_URL') %>
+  url: <%= ENV.fetch('DATABASE_URL', '') %>
