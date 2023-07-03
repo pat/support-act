@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class SplitAlbumUrls < ActiveRecord::Migration[6.0]
+  # rubocop:disable Metrics/MethodLength
   def up
     rename_column :albums, :url, :last_fm_url
     change_column_null :albums, :last_fm_url, true
@@ -16,6 +17,7 @@ class SplitAlbumUrls < ActiveRecord::Migration[6.0]
       UPDATE albums SET last_fm_url = NULL WHERE spotify_url IS NOT NULL
     SQL
   end
+  # rubocop:enable Metrics/MethodLength
 
   def down
     execute <<~SQL.squish
