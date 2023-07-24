@@ -9,6 +9,8 @@ module Parsers
         Album.with_spotify_url.each_unchecked("odesli") do |album|
           new(album).call
           sleep 1 # to avoid Odesli rate-limits.
+        rescue JSON::ParserError => error
+          Exceptions::LogForAlbum.call(error, album)
         end
       end
 
