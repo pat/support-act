@@ -23,8 +23,10 @@ class RemoveOdesliMusicbrainzTimestamps < ActiveRecord::Migration[6.0]
       WHERE odesli_checked_at IS NOT NULL
     SQL
 
-    remove_column :albums, :musicbrainz_checked_at
-    remove_column :albums, :odesli_checked_at
+    change_table(:albums, :bulk => true) do |t|
+      t.remove :musicbrainz_checked_at
+      t.remove :odesli_checked_at
+    end
   end
 
   def down
