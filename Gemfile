@@ -15,9 +15,7 @@ gem "turbolinks", "~> 5"
 gem "webpacker", "6.0.0.rc.6"
 
 gem "bootsnap", ">= 1.4.2", :require => false
-gem "decent_exposure",
-  :git    => "https://github.com/pat/decent_exposure.git",
-  :branch => "ruby-3.0-support"
+gem "decent_exposure"
 gem "devise"
 gem "faraday"
 gem "invisible_captcha"
@@ -28,9 +26,7 @@ gem "omniauth"
 gem "omniauth-rails_csrf_protection"
 gem "postmark-rails"
 gem "premailer-rails"
-gem "rspotify",
-  :git    => "https://github.com/pat/rspotify.git",
-  :branch => "chore/unpin-addressable"
+gem "rspotify"
 gem "rubocop"
 gem "rubocop-performance"
 gem "rubocop-rails"
