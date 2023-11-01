@@ -14,10 +14,10 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-require("@rails/ujs").start();
+import Rails from "@rails/ujs"
+Rails.start()
+
 require("turbolinks").start();
-require("@rails/activestorage").start();
-require("channels");
 
 window.setAsPurchased = function (id) {
   var album = document.getElementById(`album-${id}`);
