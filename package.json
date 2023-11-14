@@ -11,6 +11,10 @@
     "webpack-cli": "^4.10.0"
   },
   "version": "0.1.0",
+  "engines": {
+    "node": "20.9.0",
+    "yarn": "1.22.19"
+  },
   "devDependencies": {
     "@webpack-cli/serve": "^1.7.0"
   },
