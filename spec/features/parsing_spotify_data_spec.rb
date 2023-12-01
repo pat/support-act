@@ -21,7 +21,7 @@ RSpec.describe "Parsing Spotify data" do
   before :each do
     stub_request(:get, %r{https://api.spotify.com/v1/me/top/tracks}).to_return(
       :headers => {"Content-Type" => "application/json"},
-      :body    => JSON.dump(
+      :body    => {
         "items" => [
           {
             "album"   => {
@@ -57,7 +57,7 @@ RSpec.describe "Parsing Spotify data" do
             "uri"     => "spotify:track:0U7Ck6Fkv8eaueU2YLaAuh"
           }
         ]
-      )
+      }.to_json
     )
   end
 
