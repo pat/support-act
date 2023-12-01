@@ -1,5 +1,5 @@
 <div class="image">
-  <%= image_tag album.image if album.image %>
+  <%= image_tag(album.image || "https://picsum.photos/id/39/257/257/?grayscale") %>
 </div>
 
 <div class="album-details">
