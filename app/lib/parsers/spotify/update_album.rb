@@ -42,7 +42,7 @@ module Parsers
       end
 
       def image(array)
-        image = array.sort_by { |hash| hash["width"] }&.last
+        image = array.max_by { |hash| hash["width"] }
         return nil unless image
 
         image["url"]
