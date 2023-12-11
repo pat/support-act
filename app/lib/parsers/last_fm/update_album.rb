@@ -51,8 +51,7 @@ module Parsers
       end
 
       def image(array)
-        image = array.
-          sort_by { |hash| IMAGE_SIZE_RANKS.fetch(hash["size"], 0) }&.last
+        image = array.max_by { |hash| IMAGE_SIZE_RANKS.fetch(hash["size"], 0) }
         return nil unless image
 
         image["content"]
