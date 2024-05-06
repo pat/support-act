@@ -337,7 +337,7 @@ GEM
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
     rspec-support (3.13.1)
-    rspotify (2.12.1)
+    rspotify (2.12.2)
       addressable (~> 2.8.0)
       omniauth-oauth2 (>= 1.6)
       rest-client (~> 2.0.2)
