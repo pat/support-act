@@ -2,16 +2,20 @@
 
 class RelaxProviderColumns < ActiveRecord::Migration[6.0]
   def up
-    change_column_null :fans, :provider, true
-    change_column_null :fans, :provider_identity, true
+    change_table :fans, :bulk => true do |t|
+      t.change_null :provider, true
+      t.change_null :provider_identity, true
 
-    change_column_null :fans, :email, false
+      t.change_null :email, false
+    end
   end
 
   def down
-    change_column_null :fans, :provider, false
-    change_column_null :fans, :provider_identity, false
+    change_table :fans, :bulk => true do |t|
+      t.change_null :provider, false
+      t.change_null :provider_identity, false
 
-    change_column_null :fans, :email, true
+      t.change_null :email, true
+    end
   end
 end

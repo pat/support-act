@@ -3,9 +3,11 @@
 class SplitArtistUrls < ActiveRecord::Migration[6.0]
   # rubocop:disable Metrics/MethodLength
   def up
-    rename_column :artists, :url, :last_fm_url
-    change_column_null :artists, :last_fm_url, true
-    add_column :artists, :spotify_url, :string
+    change_table :artists, :bulk => true do |t|
+      t.rename :url, :last_fm_url
+      t.change_null :last_fm_url, true
+      t.column :spotify_url, :string
+    end
 
     execute <<~SQL.squish
       UPDATE artists
@@ -26,8 +28,10 @@ class SplitArtistUrls < ActiveRecord::Migration[6.0]
       WHERE spotify_url IS NOT NULL
     SQL
 
-    remove_column :artists, :spotify_url
-    change_column_null :artists, :last_fm_url, false
-    rename_column :artists, :last_fm_url, :url
+    change_table :artists, :bulk => true do |t|
+      t.remove :spotify_url
+      t.change_null :last_fm_url, false
+      t.rename :last_fm_url, :url
+    end
   end
 end
