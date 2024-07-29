@@ -243,7 +243,7 @@ GEM
     parser (3.3.4.0)
       ast (~> 2.4.1)
       racc
-    pg (1.5.6)
+    pg (1.5.7)
     postmark (1.22.1)
       json
     postmark-rails (0.22.1)
