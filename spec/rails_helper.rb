@@ -11,7 +11,7 @@ require "rspec/rails"
 require "capybara/rspec"
 require "capybara/email/rspec"
 
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |file| require file }
+Rails.root.glob("spec/support/**/*.rb").each { |file| require file }
 
 begin
   ActiveRecord::Migration.maintain_test_schema!
