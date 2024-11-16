@@ -114,7 +114,7 @@ GEM
       bigdecimal
       rexml
     crass (1.0.6)
-    css_parser (1.12.0)
+    css_parser (1.19.1)
       addressable
     date (3.4.0)
     decent_exposure (3.0.4)
@@ -248,9 +248,9 @@ GEM
     postmark-rails (0.22.1)
       actionmailer (>= 3.0.0)
       postmark (>= 1.21.3, < 2.0)
-    premailer (1.18.0)
+    premailer (1.27.0)
       addressable
-      css_parser (>= 1.12.0)
+      css_parser (>= 1.19.0)
       htmlentities (>= 4.0.0)
     premailer-rails (1.12.0)
       actionmailer (>= 3)
