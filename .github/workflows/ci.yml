@@ -26,7 +26,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup node
-        uses: actions/setup-node@v4.1.0
+        uses: actions/setup-node@v4
         with:
           cache: 'yarn'
           node-version-file: '.tool-versions'
@@ -52,7 +52,7 @@ jobs:
     needs: build
     if: github.ref == 'refs/heads/main'
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: akhileshns/heroku-deploy@v3.13.15
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
