@@ -3,7 +3,7 @@ name: CI
 on:
   pull_request:
     branches:
-      - '*'
+      - "*"
   push:
     branches:
       - main
@@ -28,8 +28,8 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          cache: 'yarn'
-          node-version-file: '.tool-versions'
+          cache: "yarn"
+          node-version-file: ".tool-versions"
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -46,15 +46,3 @@ jobs:
           ./bin/bootstrap
           ./bin/rake
           ./bin/bundle exec rubocop
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - uses: actions/checkout@v4
-      - uses: akhileshns/heroku-deploy@v3.13.15
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
