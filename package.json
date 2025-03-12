@@ -2,7 +2,7 @@
   "name": "support_act",
   "private": true,
   "dependencies": {
-    "@rails/actioncable": "^8.0.100",
+    "@rails/actioncable": "^8.0.200",
     "@rails/activestorage": "^8.0.200",
     "@rails/ujs": "^7.1.501",
     "@rails/webpacker": "^6.0.0-rc.6",
