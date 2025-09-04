@@ -7,7 +7,7 @@ ruby :file => ".tool-versions"
 gem "dotenv-rails", :groups => %i[ development test ]
 
 gem "pg", "~> 1.2"
-gem "puma", "~> 6.0"
+gem "puma", "~> 7.0"
 gem "rails", "~> 8.0.0"
 
 gem "sass-rails", ">= 6"
