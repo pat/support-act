@@ -116,6 +116,7 @@ GEM
     crass (1.0.6)
     css_parser (1.19.1)
       addressable
+    csv (3.3.5)
     date (3.4.1)
     decent_exposure (3.0.4)
       activesupport (>= 4.0)
@@ -452,6 +453,7 @@ DEPENDENCIES
   byebug
   capybara
   capybara-email
+  csv
   decent_exposure
   devise
   dotenv-rails

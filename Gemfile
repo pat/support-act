@@ -15,6 +15,7 @@ gem "turbolinks", "~> 5"
 gem "webpacker", "6.0.0.rc.6"
 
 gem "bootsnap", ">= 1.4.2", :require => false
+gem "csv" # For lastfm gem
 gem "decent_exposure"
 gem "devise"
 gem "faraday"
@@ -36,7 +37,7 @@ group :production do
 end
 
 group :development, :test do
-  gem "byebug", :platforms => %i[mri mingw x64_mingw]
+  gem "byebug", :platforms => %i[mri windows]
   gem "rspec-rails"
 end
 
