@@ -7,9 +7,13 @@ updates:
     time: "19:00"
   open-pull-requests-limit: 10
   versioning-strategy: increase-if-necessary
+  cooldown:
+    default-days: 5
 - package-ecosystem: npm
   directory: "/"
   schedule:
     interval: daily
     time: "19:00"
   open-pull-requests-limit: 10
+  cooldown:
+    default-days: 5
