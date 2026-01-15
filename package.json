@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^8.1.200",
-    "@rails/activestorage": "^8.1.100",
+    "@rails/activestorage": "^8.1.200",
     "@rails/ujs": "^7.1.600",
     "@rails/webpacker": "^6.0.0-rc.6",
     "turbolinks": "^5.2.0",
