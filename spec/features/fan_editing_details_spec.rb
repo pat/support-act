@@ -105,6 +105,6 @@ RSpec.describe "Fan editing details", :type => :feature do
     fill_in "Password", :with => fan.password
     click_button "Log in"
 
-    expect(page).to have_content("Invalid Email or password")
+    expect(page).to have_content("Invalid email or password")
   end
 end

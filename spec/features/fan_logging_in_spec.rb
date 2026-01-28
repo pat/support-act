@@ -31,7 +31,7 @@ RSpec.describe "Fan logging in", :type => :feature do
     fill_in "Password", :with => "green-garden"
     click_button "Log in"
 
-    expect(page).to have_content("Invalid Email or password")
+    expect(page).to have_content("Invalid email or password")
   end
 
   it "fails with unconfirmed accounts" do
