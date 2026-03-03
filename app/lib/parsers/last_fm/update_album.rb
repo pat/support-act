@@ -58,8 +58,8 @@ module Parsers
       end
 
       def images(array)
-        array.each_with_object({}) do |hash, result|
-          result[hash["size"]] = hash["content"]
+        array.to_h do |hash|
+          [hash["size"], hash["content"]]
         end
       end
 
