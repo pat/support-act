@@ -92,7 +92,7 @@ GEM
     bcrypt (3.1.22)
     bigdecimal (4.1.0)
     bindex (0.8.1)
-    bootsnap (1.23.0)
+    bootsnap (1.24.0)
       msgpack (~> 1.2)
     bugsnag (6.30.0)
       concurrent-ruby (~> 1.0)
@@ -508,7 +508,7 @@ CHECKSUMS
   bcrypt (3.1.22) sha256=1f0072e88c2d705d94aff7f2c5cb02eb3f1ec4b8368671e19112527489f29032
   bigdecimal (4.1.0) sha256=6dc07767aa3dc456ccd48e7ae70a07b474e9afd7c5bc576f80bd6da5c8dd6cae
   bindex (0.8.1) sha256=7b1ecc9dc539ed8bccfc8cb4d2732046227b09d6f37582ff12e50a5047ceb17e
-  bootsnap (1.23.0) sha256=c1254f458d58558b58be0f8eb8f6eec2821456785b7cdd1e16248e2020d3f214
+  bootsnap (1.24.0) sha256=34e6dea61ff4895101aa9c10894ce30186bec73fe2279e0eb52040d8d4cec297
   bugsnag (6.30.0) sha256=c496cfceb4a9811ce718b0d2ff66c5a35d158804b79e60c3d2ba12d9084ff19e
   builder (3.3.0) sha256=497918d2f9dca528fdca4b88d84e4ef4387256d984b8154e9d5d3fe5a9c8835f
   byebug (13.0.0) sha256=d2263efe751941ca520fa29744b71972d39cbc41839496706f5d9b22e92ae05d
