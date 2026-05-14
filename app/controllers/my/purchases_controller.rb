@@ -3,8 +3,8 @@
 module My
   class PurchasesController < My::ApplicationController
     def new
-      fan = Fan.find_by!(:identifier => params[:fan_uuid])
-      album = Album.find_by!(:identifier => params[:album_uuid])
+      fan = Fan.find_by!(:identifier => params.expect(:fan_uuid))
+      album = Album.find_by!(:identifier => params.expect(:album_uuid))
 
       Purchase.create!(:fan => fan, :album => album)
 
