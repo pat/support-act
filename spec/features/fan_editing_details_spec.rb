@@ -62,17 +62,19 @@ RSpec.describe "Fan editing details", :type => :feature do
     fan.update(
       :provider          => "last.fm",
       :provider_identity => "freelancing_god",
-      :provider_cache    => {"token" => SecureRandom.uuid}
+      :provider_cache    => {"token" => SecureRandom.uuid},
+      :active            => true
     )
 
     click_link "My Account"
-    click_link "Disconnect Last.fm"
+    click_button "Disconnect Last.fm"
 
     expect(page).to have_content("Last.fm has been disconnected")
     expect(fan.reload).to have_attributes(
       :provider          => nil,
       :provider_identity => nil,
-      :provider_cache    => {}
+      :provider_cache    => {},
+      :active            => false
     )
   end
 
@@ -80,23 +82,43 @@ RSpec.describe "Fan editing details", :type => :feature do
     fan.update(
       :provider          => "spotify",
       :provider_identity => "freelancing_god",
-      :provider_cache    => {"token" => SecureRandom.uuid}
+      :provider_cache    => {"token" => SecureRandom.uuid},
+      :active            => true
     )
 
     click_link "My Account"
-    click_link "Disconnect Spotify"
+    click_button "Disconnect Spotify"
 
     expect(page).to have_content("Spotify has been disconnected")
     expect(fan.reload).to have_attributes(
       :provider          => nil,
       :provider_identity => nil,
-      :provider_cache    => {}
+      :provider_cache    => {},
+      :active            => false
+    )
+  end
+
+  it "reconnecting Spotify" do
+    fan.update(
+      :provider          => "spotify",
+      :provider_identity => "freelancing_god",
+      :provider_cache    => {"token" => SecureRandom.uuid},
+      :active            => false
+    )
+
+    click_link "My Account"
+    click_button "Reconnect to Spotify"
+
+    expect(page).to have_content("Spotify has been disconnected")
+    expect(fan.reload).to have_attributes(
+      :provider => "spotify",
+      :active   => true
     )
   end
 
   it "deleting the account" do
     click_link "My Account"
-    click_link "Delete Account"
+    click_button "Delete Account"
 
     expect(page).to have_content("Your account has been deleted")
 

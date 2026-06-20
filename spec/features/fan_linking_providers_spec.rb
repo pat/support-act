@@ -28,7 +28,7 @@ RSpec.describe "Fan linking providers", :type => :feature do
     )
 
     visit my_dashboard_path
-    click_link "Connect to Spotify"
+    click_button "Connect to Spotify"
 
     fan.reload
 

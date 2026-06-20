@@ -3,7 +3,7 @@
 
   <p>
     <%= link_to "Connect to Last.fm", new_last_fm_connection_path, :class =>'button' %>
-    <%= link_to "Connect to Spotify", "/auth/spotify", :method => :post, :class => 'button primary' %>
+    <%= button_to "Connect to Spotify", "/auth/spotify", :method => :post, :class => 'button primary' %>
   </p>
 
   <p>Last.fm provides more detailed statistics, so that's certainly recommended, but if you've only got Spotify, you'll still get some recommendations from the past several months.</p>

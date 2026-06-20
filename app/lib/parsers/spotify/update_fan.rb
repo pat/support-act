@@ -17,11 +17,19 @@ module Parsers
         fan.provider_cache["latest_album_ids"] =
           top_albums.collect { |object| UpdateAlbum.call(object).id }
         fan.save
+      rescue RestClient::Unauthorized
+        notify_reconnect
       end
 
       private
 
       attr_reader :fan
+
+      def notify_reconnect
+        fan.update!(:active => false)
+
+        FanMailer.reconnect_spotify(fan).deliver_now
+      end
 
       def spotify_user
         @spotify_user ||= RSpotify::User.new(fan.provider_cache["oauth"])

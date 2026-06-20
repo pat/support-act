@@ -11,6 +11,10 @@ en:
       fan:
         password_confirmation: "Confirm Password"
 
+  fan_mailer:
+    reconnect_spotify:
+      subject: "Spotify requires reconnecting (Support Act)"
+
   last_fm:
     connections:
       destroy:
@@ -34,7 +38,7 @@ en:
 
   suggestions_mailer:
     suggest:
-      subject: "Monthly Suggestions"
+      subject: "Monthly Suggestions (Support Act)"
 
   unsubscriptions:
     create:

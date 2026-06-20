@@ -107,4 +107,24 @@ RSpec.describe "Parsing Spotify data" do
 
     expect(fan.provider_cache["latest_album_ids"]).to eq([album.id])
   end
+
+  it "notifies the fan when Spotify is disconnected" do
+    stub_request(:get, %r{https://api.spotify.com/v1/me/top/tracks}).to_return(
+      :headers => {"Content-Type" => "application/json"},
+      :status  => 401,
+      :body    => {
+        :error => {
+          :status  => 401,
+          :message => "invalid_grant"
+        }
+      }.to_json
+    )
+
+    Parse.call(fan)
+
+    expect(fan.reload.active).to eq(false)
+    expect(ActionMailer::Base.deliveries.length).to eq(1)
+    expect(ActionMailer::Base.deliveries.first.subject).
+      to eq("Spotify requires reconnecting (Support Act)")
+  end
 end
