@@ -11,9 +11,10 @@ class Fan < ApplicationRecord
   scope :confirmed, lambda { where.not(:confirmed_at => nil) }
   scope :subscribed, lambda { where(:subscribed => true) }
   scope :with_provider, lambda { where.not(:provider => nil) }
+  scope :with_provider, lambda { where(:active => true) }
 
   def self.subscribed_with_provider
-    confirmed.with_provider.subscribed
+    confirmed.with_provider.subscribed.active
   end
 
   private

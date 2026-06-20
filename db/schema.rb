@@ -10,24 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_30_050727) do
+ActiveRecord::Schema[8.1].define(version: 2026_06_20_032751) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "albums", force: :cascade do |t|
-    t.uuid "identifier", null: false
-    t.string "name", null: false
-    t.string "last_fm_url"
-    t.string "mbid"
-    t.jsonb "images", default: {}, null: false
     t.bigint "artist_id", null: false
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.jsonb "spotify_raw", default: {}, null: false
+    t.uuid "identifier", null: false
     t.string "image"
-    t.string "spotify_url"
+    t.jsonb "images", default: {}, null: false
     t.jsonb "last_fm_raw", default: {}, null: false
+    t.string "last_fm_url"
     t.json "links", default: {}, null: false
+    t.string "mbid"
+    t.string "name", null: false
+    t.jsonb "spotify_raw", default: {}, null: false
+    t.string "spotify_url"
+    t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_albums_on_artist_id"
     t.index ["identifier"], name: "index_albums_on_identifier", unique: true
     t.index ["last_fm_url"], name: "index_albums_on_last_fm_url"
@@ -36,16 +36,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_30_050727) do
   end
 
   create_table "artists", force: :cascade do |t|
-    t.uuid "identifier", null: false
-    t.string "name", null: false
-    t.string "last_fm_url"
-    t.string "mbid"
     t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.uuid "identifier", null: false
+    t.jsonb "last_fm_raw", default: {}, null: false
+    t.string "last_fm_url"
+    t.json "links", default: {}, null: false
+    t.string "mbid"
+    t.string "name", null: false
     t.jsonb "spotify_raw", default: {}, null: false
     t.string "spotify_url"
-    t.jsonb "last_fm_raw", default: {}, null: false
-    t.json "links", default: {}, null: false
+    t.datetime "updated_at", null: false
     t.index ["identifier"], name: "index_artists_on_identifier", unique: true
     t.index ["last_fm_url"], name: "index_artists_on_last_fm_url"
     t.index ["mbid"], name: "index_artists_on_mbid"
@@ -53,27 +53,29 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_30_050727) do
   end
 
   create_table "fans", force: :cascade do |t|
-    t.uuid "identifier", null: false
-    t.string "provider"
-    t.string "provider_identity"
-    t.jsonb "provider_cache", default: {}, null: false
-    t.string "email", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer "sign_in_count", default: 0, null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
+    t.boolean "active", default: true, null: false
+    t.datetime "confirmation_sent_at"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
+    t.datetime "created_at", null: false
+    t.datetime "current_sign_in_at"
+    t.inet "current_sign_in_ip"
+    t.string "email", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.uuid "identifier", null: false
+    t.datetime "last_sign_in_at"
+    t.inet "last_sign_in_ip"
+    t.string "provider"
+    t.jsonb "provider_cache", default: {}, null: false
+    t.string "provider_identity"
+    t.datetime "remember_created_at"
+    t.datetime "reset_password_sent_at"
+    t.string "reset_password_token"
+    t.integer "sign_in_count", default: 0, null: false
     t.boolean "subscribed", default: true, null: false
+    t.string "unconfirmed_email"
+    t.datetime "updated_at", null: false
+    t.index ["active"], name: "index_fans_on_active"
     t.index ["confirmation_token"], name: "index_fans_on_confirmation_token", unique: true
     t.index ["email"], name: "index_fans_on_email", unique: true
     t.index ["identifier"], name: "index_fans_on_identifier", unique: true
@@ -83,8 +85,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_30_050727) do
 
   create_table "purchases", force: :cascade do |t|
     t.bigint "album_id", null: false
-    t.bigint "fan_id", null: false
     t.datetime "created_at", null: false
+    t.bigint "fan_id", null: false
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_purchases_on_album_id"
     t.index ["fan_id", "album_id"], name: "index_purchases_on_fan_id_and_album_id", unique: true
@@ -93,11 +95,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_30_050727) do
 
   create_table "service_checks", force: :cascade do |t|
     t.bigint "checkable_id", null: false
-    t.string "service", null: false
-    t.datetime "last_checked_at", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "checkable_type", default: "Album"
+    t.datetime "created_at", null: false
+    t.datetime "last_checked_at", null: false
+    t.string "service", null: false
+    t.datetime "updated_at", null: false
     t.index ["checkable_id", "checkable_type"], name: "index_service_checks_on_checkable"
   end
 

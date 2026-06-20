@@ -10,7 +10,8 @@ module LastFm
       current_fan.update!(
         :provider          => "last.fm",
         :provider_identity => last_fm_user.get_info["name"],
-        :provider_cache    => {"token" => last_fm.session}
+        :provider_cache    => {"token" => last_fm.session},
+        :active            => true
       )
 
       Parse.call(current_fan)
@@ -32,7 +33,8 @@ module LastFm
       current_fan.update!(
         :provider          => nil,
         :provider_identity => nil,
-        :provider_cache    => {}
+        :provider_cache    => {},
+        :active            => false
       )
 
       redirect_to my_dashboard_path, :notice => t(".success")

@@ -4,14 +4,15 @@ module Spotify
   class ConnectionsController < ApplicationController
     before_action :authenticate_fan!
 
-    def create
+    def create # rubocop:disable Metrics/MethodLength
       current_fan.update!(
         :provider          => "spotify",
         :provider_identity => spotify_user.id,
         :provider_cache    => {
           "oauth"            => spotify_user.to_hash,
           "latest_album_ids" => []
-        }
+        },
+        :active            => true
       )
 
       Parse.call(current_fan)
@@ -23,7 +24,8 @@ module Spotify
       current_fan.update!(
         :provider          => nil,
         :provider_identity => nil,
-        :provider_cache    => {}
+        :provider_cache    => {},
+        :active            => false
       )
 
       redirect_to my_dashboard_path, :notice => t(".success")
