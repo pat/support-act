@@ -11,8 +11,8 @@ gem "puma", "~> 8.0"
 gem "rails", "~> 8.1.1"
 
 gem "sass-rails", ">= 6"
+gem "shakapacker", "~> 10.1"
 gem "turbolinks", "~> 5"
-gem "webpacker", "6.0.0.rc.6"
 
 gem "bootsnap", ">= 1.4.2", :require => false
 gem "csv" # For lastfm gem
