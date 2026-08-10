@@ -40,7 +40,7 @@ updates:
   schedule:
     interval: daily
     time: "19:00"
-  patterns: ["shakapacker"]
+  patterns: ["shakapacker", "shakapacker-webpack"]
   multi-ecosystem-group: shakapacker
   cooldown:
     default-days: 5
