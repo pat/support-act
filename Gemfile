@@ -11,7 +11,7 @@ gem "puma", "~> 8.0"
 gem "rails", "~> 8.1.1"
 
 gem "sass-rails", ">= 6"
-gem "shakapacker", "~> 10.1"
+gem "shakapacker", "~> 10.3"
 gem "turbolinks", "~> 5"
 
 gem "bootsnap", ">= 1.4.2", :require => false
