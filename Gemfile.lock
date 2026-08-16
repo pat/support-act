@@ -492,7 +492,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   sass-rails (>= 6)
-  shakapacker (~> 10.1)
+  shakapacker (~> 10.3)
   sslocal
   turbolinks (~> 5)
   web-console (>= 3.3.0)
