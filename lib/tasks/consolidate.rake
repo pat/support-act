@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/BlockLength, Rails/SkipsModelValidations
+# rubocop:disable-next Metrics/BlockLength, Rails/SkipsModelValidations
 namespace :consolidate do
   task :artists => :environment do
     Artist.group(:name).having("count(*) > 1").pluck(:name).each do |name|
@@ -57,4 +57,3 @@ namespace :consolidate do
     end
   end
 end
-# rubocop:enable Metrics/BlockLength, Rails/SkipsModelValidations

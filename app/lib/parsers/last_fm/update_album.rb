@@ -14,7 +14,7 @@ module Parsers
         new.call(hash, album, :ignore_artist => ignore_artist)
       end
 
-      # rubocop:disable Metrics/AbcSize
+      # rubocop:disable-next Metrics/AbcSize
       def call(hash, album, ignore_artist: false)
         album ||= find_or_initialize_by_url_or_name(Album, hash)
 
@@ -28,7 +28,6 @@ module Parsers
 
         album
       end
-      # rubocop:enable Metrics/AbcSize
 
       private
 
