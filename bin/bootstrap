@@ -6,4 +6,4 @@ cd "$(dirname "$0")/.."
 yarn install
 
 ./bin/bundle install
-./bin/rails db:create db:migrate
+./bin/rails db:create db:setup
