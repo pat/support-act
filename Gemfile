@@ -20,7 +20,7 @@ gem "decent_exposure"
 gem "devise"
 gem "faraday"
 gem "invisible_captcha"
-gem "json", "< 3" # v3 unsupported by Rails 8.1.3.1
+gem "json", "< 4" # v3 unsupported by Rails 8.1.3.1
 gem "lastfm"
 gem "musicbrainz", :git => "https://github.com/inkstak/musicbrainz.git"
 gem "nokogiri"
