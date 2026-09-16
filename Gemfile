@@ -28,9 +28,7 @@ gem "omniauth"
 gem "omniauth-rails_csrf_protection"
 gem "postmark-rails"
 gem "premailer-rails"
-gem "rspotify",
-  :git    => "https://github.com/pat/rspotify.git",
-  :branch => "chore/relax-dependencies"
+gem "rspotify", :git => "https://github.com/guilhermesad/rspotify.git"
 gem "rubocop"
 gem "rubocop-performance"
 gem "rubocop-rails"

@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/guilhermesad/rspotify.git
+  revision: ee455d5716971fbcabce95215314af8ff6f6b111
+  specs:
+    rspotify (2.12.4)
+      addressable (~> 2.8)
+      omniauth-oauth2 (>= 1.6)
+      rest-client (~> 2.0)
+
+GIT
   remote: https://github.com/inkstak/musicbrainz.git
   revision: 87f963ebeff89003bd202b5708fa44c445a28980
   specs:
@@ -7,16 +16,6 @@ GIT
       faraday
       faraday_middleware
       hashie (>= 3.2.0)
-
-GIT
-  remote: https://github.com/pat/rspotify.git
-  revision: 90c464023d0fcbd6db294e73957b8641f8df4de8
-  branch: chore/relax-dependencies
-  specs:
-    rspotify (2.12.4)
-      addressable (~> 2.8)
-      omniauth-oauth2 (>= 1.6)
-      rest-client (~> 2.0)
 
 GEM
   remote: https://gem.coop/
