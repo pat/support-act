@@ -3,7 +3,7 @@
 namespace :albums do
   task :complete => :environment do
     Parsers::LastFm::UpdateUnknown.call
-    Parsers::Spotify::UpdateUnknown.call
+    # Parsers::Spotify::UpdateUnknown.call
   end
 
   task :links => :environment do
