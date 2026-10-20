@@ -10,7 +10,7 @@ This project uses v2 of the [Contributor Covenant](https://www.contributor-coven
 
 ## Contributing
 
-If you're interested in contributing to this project, I'd love to hear from you - it's best to create an issue on GitHub to discuss what you'd like to change/add, just to make sure it's something I'm open to adding.
+If you're interested in contributing to this project, I'd love to hear from you - it's best to create an issue on GitHub to discuss what you'd like to change/add, just to make sure it's something I'm open to adding. Also, please note the [AI/LLMs policy](https://github.com/pat/support-act/blob/main/AI_POLICY.md).
 
 If you do get stuck into writing/changing code, please keep your changes to a feature branch.
 
