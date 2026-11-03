@@ -44,3 +44,10 @@ updates:
   multi-ecosystem-group: shakapacker
   cooldown:
     default-days: 5
+
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+    interval: daily
+  cooldown:
+    default-days: 5
