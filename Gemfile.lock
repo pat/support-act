@@ -8,9 +8,8 @@ GIT
       rest-client (~> 2.0)
 
 GIT
-  remote: https://github.com/pat/musicbrainz.git
-  revision: ef78e29f04527d078e8f4a91ed4713cc9aeeb3f3
-  branch: modernise
+  remote: https://github.com/inkstak/musicbrainz.git
+  revision: 32cbc656070ff235fa6ec7019b18b1dd0f813d73
   specs:
     musicbrainz (1.2.0)
       activesupport

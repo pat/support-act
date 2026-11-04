@@ -22,9 +22,7 @@ gem "faraday"
 gem "invisible_captcha"
 gem "json", "< 4" # v3 unsupported by Rails 8.1.3.1
 gem "lastfm"
-gem "musicbrainz",
-  :git    => "https://github.com/pat/musicbrainz.git",
-  :branch => "modernise"
+gem "musicbrainz", :git => "https://github.com/inkstak/musicbrainz.git"
 gem "nokogiri"
 gem "omniauth"
 gem "omniauth-rails_csrf_protection"
