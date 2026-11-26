@@ -1983,7 +1983,7 @@ sass-loader@^17.1.1:
   resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-17.1.1.tgz#755fb6703c4db02d012706e96b76e9f09ae1deb2"
   integrity sha512-/0DqgO+5tTsXYdbnErt5XzPbRQqD+49brZ8+vKnzOTIRbrgPlPJGghGVFq6xgAjv9pf2TLHvLdrgEYYPEKGtGQ==
 
-schema-utils@^4.0.0, schema-utils@^4.2.0, schema-utils@^4.3.0, schema-utils@^4.3.3, schema-utils@^4.8.1, schema-utils@^4.8.2, schema-utils@^4.8.5:
+schema-utils@^4.0.0, schema-utils@^4.2.0, schema-utils@^4.3.0, schema-utils@^4.3.3, schema-utils@^4.8.2, schema-utils@^4.8.3, schema-utils@^4.8.5:
   version "4.8.5"
   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-4.8.5.tgz#aa5abf4653e45af6a4c7c0ab7ef11d6f18ffcf22"
   integrity sha512-K1RRP7aTUAY2lGXNzPwjMK6AMMzbETdpF3pTPMEnH/RrpmPx6K1X47/gSebrV+1I9pRcgpwZwqpYBlyZAsliiw==
@@ -2358,15 +2358,15 @@ watchpack@^2.6.4:
   dependencies:
     graceful-fs "^4.1.2"
 
-webpack-assets-manifest@^6.5.5:
-  version "6.5.5"
-  resolved "https://registry.yarnpkg.com/webpack-assets-manifest/-/webpack-assets-manifest-6.5.5.tgz#ee45df9112182c2969310ec49ed062687616dc2a"
-  integrity sha512-903fXlc3OljGFVwb7+67QvanQChsgVsRoIDDtKw1ioVjRi8C+vprl4lAHDVZ6nKbdO4oPobg0cvPcI8UdDDmHA==
+webpack-assets-manifest@^6.5.6:
+  version "6.5.6"
+  resolved "https://registry.yarnpkg.com/webpack-assets-manifest/-/webpack-assets-manifest-6.5.6.tgz#0f92fd1caef5a9e8fbfbfae0390e805efba3637a"
+  integrity sha512-SA5GaE6UUWyVKLm9TMou3Cn42Ij/yBpkHepVUQ0vdAQZVqXYkKolXXpwC1VGMpy1LttuEsyya08DxAsWQ/3MMg==
   dependencies:
     deepmerge "^4.3.1"
     proper-lockfile "^4.1.2"
-    schema-utils "^4.8.1"
-    tapable "^2.3.3"
+    schema-utils "^4.8.3"
+    tapable "^2.3.4"
 
 webpack-cli@^6.0.1:
   version "6.0.1"
